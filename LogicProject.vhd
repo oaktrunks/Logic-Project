@@ -1,1 +1,1 @@
-danny is cool in STD_LOGIC
+danny is lame in STD_LOGIC
