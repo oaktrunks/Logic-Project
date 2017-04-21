@@ -6,7 +6,6 @@ enADD, enXOR, enMOVREGTOREG, enMOVDATA, enINC, enDEC, enROL, enROR, enNEG, enOUT
 end;
 architecture decoder of LogicProject is
 begin
-UPD <=
 enADD <=
 enXOR <=
 enMOVREGTOREG <=
