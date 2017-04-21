@@ -1,0 +1,964 @@
+TimeQuest Timing Analyzer report for LogicProject
+Thu Apr 20 22:48:40 2017
+Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. TimeQuest Timing Analyzer Summary
+  3. Parallel Compilation
+  4. Clocks
+  5. Slow Model Fmax Summary
+  6. Slow Model Setup Summary
+  7. Slow Model Hold Summary
+  8. Slow Model Recovery Summary
+  9. Slow Model Removal Summary
+ 10. Slow Model Minimum Pulse Width Summary
+ 11. Propagation Delay
+ 12. Minimum Propagation Delay
+ 13. Fast Model Setup Summary
+ 14. Fast Model Hold Summary
+ 15. Fast Model Recovery Summary
+ 16. Fast Model Removal Summary
+ 17. Fast Model Minimum Pulse Width Summary
+ 18. Propagation Delay
+ 19. Minimum Propagation Delay
+ 20. Multicorner Timing Analysis Summary
+ 21. Progagation Delay
+ 22. Minimum Progagation Delay
+ 23. Clock Transfers
+ 24. Report TCCS
+ 25. Report RSKM
+ 26. Unconstrained Paths
+ 27. TimeQuest Timing Analyzer Messages
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2013 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++----------------------------------------------------------------------------------------+
+; TimeQuest Timing Analyzer Summary                                                      ;
++--------------------+-------------------------------------------------------------------+
+; Quartus II Version ; Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition ;
+; Revision Name      ; LogicProject                                                      ;
+; Device Family      ; Cyclone II                                                        ;
+; Device Name        ; EP2C5T144C6                                                       ;
+; Timing Models      ; Final                                                             ;
+; Delay Model        ; Combined                                                          ;
+; Rise/Fall Delays   ; Unavailable                                                       ;
++--------------------+-------------------------------------------------------------------+
+
+
+Parallel compilation was disabled, but you have multiple processors available. Enable parallel compilation to reduce compilation time.
++-------------------------------------+
+; Parallel Compilation                ;
++----------------------------+--------+
+; Processors                 ; Number ;
++----------------------------+--------+
+; Number detected on machine ; 8      ;
+; Maximum allowed            ; 1      ;
++----------------------------+--------+
+
+
+----------
+; Clocks ;
+----------
+No clocks to report.
+
+
+---------------------------
+; Slow Model Fmax Summary ;
+---------------------------
+No paths to report.
+
+
+----------------------------
+; Slow Model Setup Summary ;
+----------------------------
+No paths to report.
+
+
+---------------------------
+; Slow Model Hold Summary ;
+---------------------------
+No paths to report.
+
+
+-------------------------------
+; Slow Model Recovery Summary ;
+-------------------------------
+No paths to report.
+
+
+------------------------------
+; Slow Model Removal Summary ;
+------------------------------
+No paths to report.
+
+
+------------------------------------------
+; Slow Model Minimum Pulse Width Summary ;
+------------------------------------------
+No paths to report.
+
+
++---------------------------------------------------------------------+
+; Propagation Delay                                                   ;
++-----------------+---------------+--------+--------+--------+--------+
+; Input Port      ; Output Port   ; RR     ; RF     ; FR     ; FF     ;
++-----------------+---------------+--------+--------+--------+--------+
+; instruction[3]  ; enDEC         ; 10.450 ;        ;        ; 10.450 ;
+; instruction[3]  ; enINC         ;        ; 11.182 ; 11.182 ;        ;
+; instruction[3]  ; enNEG         ; 10.507 ;        ;        ; 10.507 ;
+; instruction[3]  ; enOUT         ;        ; 9.868  ; 9.868  ;        ;
+; instruction[3]  ; enROL         ;        ; 10.129 ; 10.129 ;        ;
+; instruction[3]  ; enROR         ; 9.524  ;        ;        ; 9.524  ;
+; instruction[4]  ; enDEC         ;        ; 10.716 ; 10.716 ;        ;
+; instruction[4]  ; enINC         ;        ; 11.444 ; 11.444 ;        ;
+; instruction[4]  ; enNEG         ; 10.103 ;        ;        ; 10.103 ;
+; instruction[4]  ; enOUT         ;        ; 10.166 ; 10.166 ;        ;
+; instruction[4]  ; enROL         ;        ; 10.754 ; 10.754 ;        ;
+; instruction[4]  ; enROR         ;        ; 10.128 ; 10.128 ;        ;
+; instruction[5]  ; enDEC         ;        ; 12.746 ; 12.746 ;        ;
+; instruction[5]  ; enINC         ;        ; 13.474 ; 13.474 ;        ;
+; instruction[5]  ; enNEG         ;        ; 11.444 ; 11.444 ;        ;
+; instruction[5]  ; enOUT         ;        ; 12.196 ; 12.196 ;        ;
+; instruction[5]  ; enROL         ;        ; 11.994 ; 11.994 ;        ;
+; instruction[5]  ; enROR         ;        ; 11.364 ; 11.364 ;        ;
+; instruction[6]  ; enADD         ; 6.791  ;        ;        ; 6.791  ;
+; instruction[6]  ; enDEC         ; 6.861  ;        ;        ; 6.861  ;
+; instruction[6]  ; enINC         ; 7.589  ;        ;        ; 7.589  ;
+; instruction[6]  ; enMOVREGTOREG ; 8.426  ;        ;        ; 8.426  ;
+; instruction[6]  ; enNEG         ; 5.563  ;        ;        ; 5.563  ;
+; instruction[6]  ; enOUT         ; 6.311  ;        ;        ; 6.311  ;
+; instruction[6]  ; enROL         ; 8.464  ;        ;        ; 8.464  ;
+; instruction[6]  ; enROR         ; 7.859  ;        ;        ; 7.859  ;
+; instruction[6]  ; enXOR         ; 7.573  ;        ;        ; 7.573  ;
+; instruction[7]  ; enADD         ; 6.809  ;        ;        ; 6.809  ;
+; instruction[7]  ; enDEC         ; 6.881  ;        ;        ; 6.881  ;
+; instruction[7]  ; enINC         ; 7.609  ;        ;        ; 7.609  ;
+; instruction[7]  ; enMOVREGTOREG ; 8.444  ;        ;        ; 8.444  ;
+; instruction[7]  ; enNEG         ; 5.583  ;        ;        ; 5.583  ;
+; instruction[7]  ; enOUT         ; 6.331  ;        ;        ; 6.331  ;
+; instruction[7]  ; enROL         ; 8.482  ;        ;        ; 8.482  ;
+; instruction[7]  ; enROR         ; 7.877  ;        ;        ; 7.877  ;
+; instruction[7]  ; enXOR         ; 7.591  ;        ;        ; 7.591  ;
+; instruction[8]  ; enADD         ;        ; 11.088 ; 11.088 ;        ;
+; instruction[8]  ; enDEC         ;        ; 11.158 ; 11.158 ;        ;
+; instruction[8]  ; enINC         ;        ; 11.886 ; 11.886 ;        ;
+; instruction[8]  ; enMOVREGTOREG ;        ; 12.723 ; 12.723 ;        ;
+; instruction[8]  ; enNEG         ;        ; 9.860  ; 9.860  ;        ;
+; instruction[8]  ; enOUT         ;        ; 10.608 ; 10.608 ;        ;
+; instruction[8]  ; enROL         ;        ; 12.761 ; 12.761 ;        ;
+; instruction[8]  ; enROR         ;        ; 12.156 ; 12.156 ;        ;
+; instruction[8]  ; enXOR         ;        ; 11.870 ; 11.870 ;        ;
+; instruction[9]  ; enADD         ;        ; 6.620  ; 6.620  ;        ;
+; instruction[9]  ; enDEC         ; 6.691  ;        ;        ; 6.691  ;
+; instruction[9]  ; enINC         ; 7.419  ;        ;        ; 7.419  ;
+; instruction[9]  ; enMOVREGTOREG ;        ; 8.255  ; 8.255  ;        ;
+; instruction[9]  ; enNEG         ; 5.393  ;        ;        ; 5.393  ;
+; instruction[9]  ; enOUT         ; 6.141  ;        ;        ; 6.141  ;
+; instruction[9]  ; enROL         ;        ; 8.293  ; 8.293  ;        ;
+; instruction[9]  ; enROR         ;        ; 7.688  ; 7.688  ;        ;
+; instruction[9]  ; enXOR         ;        ; 7.402  ; 7.402  ;        ;
+; instruction[10] ; enADD         ;        ; 9.976  ; 9.976  ;        ;
+; instruction[10] ; enDEC         ; 11.894 ;        ;        ; 11.894 ;
+; instruction[10] ; enINC         ; 12.622 ;        ;        ; 12.622 ;
+; instruction[10] ; enMOVREGTOREG ;        ; 11.777 ; 11.777 ;        ;
+; instruction[10] ; enNEG         ; 10.592 ;        ;        ; 10.592 ;
+; instruction[10] ; enOUT         ; 11.344 ;        ;        ; 11.344 ;
+; instruction[10] ; enROL         ;        ; 11.111 ; 11.111 ;        ;
+; instruction[10] ; enROR         ;        ; 10.506 ; 10.506 ;        ;
+; instruction[10] ; enXOR         ;        ; 10.217 ; 10.217 ;        ;
+; instruction[11] ; enADD         ;        ; 6.061  ; 6.061  ;        ;
+; instruction[11] ; enDEC         ; 5.701  ;        ;        ; 5.701  ;
+; instruction[11] ; enINC         ; 6.427  ;        ;        ; 6.427  ;
+; instruction[11] ; enMOVDATA     ;        ; 6.056  ; 6.056  ;        ;
+; instruction[11] ; enMOVREGTOREG ; 7.440  ;        ;        ; 7.440  ;
+; instruction[11] ; enNEG         ;        ; 5.739  ; 5.739  ;        ;
+; instruction[11] ; enOUT         ;        ; 5.103  ; 5.103  ;        ;
+; instruction[11] ; enROL         ;        ; 6.409  ; 6.409  ;        ;
+; instruction[11] ; enROR         ;        ; 5.783  ; 5.783  ;        ;
+; instruction[11] ; enXOR         ;        ; 7.396  ; 7.396  ;        ;
+; instruction[12] ; enADD         ;        ; 10.379 ; 10.379 ;        ;
+; instruction[12] ; enDEC         ; 10.314 ;        ;        ; 10.314 ;
+; instruction[12] ; enINC         ; 11.045 ;        ;        ; 11.045 ;
+; instruction[12] ; enMOVDATA     ; 10.149 ;        ;        ; 10.149 ;
+; instruction[12] ; enMOVREGTOREG ;        ; 11.654 ; 11.654 ;        ;
+; instruction[12] ; enNEG         ; 10.375 ;        ;        ; 10.375 ;
+; instruction[12] ; enOUT         ;        ; 9.735  ; 9.735  ;        ;
+; instruction[12] ; enROL         ; 11.043 ;        ;        ; 11.043 ;
+; instruction[12] ; enROR         ; 10.417 ;        ;        ; 10.417 ;
+; instruction[12] ; enXOR         ; 11.073 ;        ;        ; 11.073 ;
+; instruction[13] ; enADD         ;        ; 10.996 ; 10.996 ;        ;
+; instruction[13] ; enDEC         ; 12.925 ;        ;        ; 12.925 ;
+; instruction[13] ; enINC         ; 13.653 ;        ;        ; 13.653 ;
+; instruction[13] ; enMOVDATA     ; 10.215 ;        ;        ; 10.215 ;
+; instruction[13] ; enMOVREGTOREG ;        ; 12.795 ; 12.795 ;        ;
+; instruction[13] ; enNEG         ; 11.623 ;        ;        ; 11.623 ;
+; instruction[13] ; enOUT         ; 12.375 ;        ;        ; 12.375 ;
+; instruction[13] ; enROL         ;        ; 12.127 ; 12.127 ;        ;
+; instruction[13] ; enROR         ;        ; 11.522 ; 11.522 ;        ;
+; instruction[13] ; enXOR         ; 11.807 ;        ;        ; 11.807 ;
+; instruction[14] ; enADD         ;        ; 10.936 ; 10.936 ;        ;
+; instruction[14] ; enDEC         ; 12.365 ;        ;        ; 12.365 ;
+; instruction[14] ; enINC         ; 13.093 ;        ;        ; 13.093 ;
+; instruction[14] ; enMOVDATA     ;        ; 10.030 ; 10.030 ;        ;
+; instruction[14] ; enMOVREGTOREG ;        ; 12.211 ; 12.211 ;        ;
+; instruction[14] ; enNEG         ; 11.063 ;        ;        ; 11.063 ;
+; instruction[14] ; enOUT         ; 11.815 ;        ;        ; 11.815 ;
+; instruction[14] ; enROL         ; 11.708 ;        ;        ; 11.708 ;
+; instruction[14] ; enROR         ; 11.078 ;        ;        ; 11.078 ;
+; instruction[14] ; enXOR         ;        ; 11.622 ; 11.622 ;        ;
+; instruction[15] ; enADD         ;        ; 10.099 ; 10.099 ;        ;
+; instruction[15] ; enDEC         ; 10.573 ;        ;        ; 10.573 ;
+; instruction[15] ; enINC         ; 11.301 ;        ;        ; 11.301 ;
+; instruction[15] ; enMOVDATA     ; 9.846  ;        ;        ; 9.846  ;
+; instruction[15] ; enMOVREGTOREG ; 11.900 ;        ;        ; 11.900 ;
+; instruction[15] ; enNEG         ; 9.272  ;        ;        ; 9.272  ;
+; instruction[15] ; enOUT         ; 10.023 ;        ;        ; 10.023 ;
+; instruction[15] ; enROL         ; 10.611 ;        ;        ; 10.611 ;
+; instruction[15] ; enROR         ; 9.985  ;        ;        ; 9.985  ;
+; instruction[15] ; enXOR         ;        ; 10.347 ; 10.347 ;        ;
++-----------------+---------------+--------+--------+--------+--------+
+
+
++---------------------------------------------------------------------+
+; Minimum Propagation Delay                                           ;
++-----------------+---------------+--------+--------+--------+--------+
+; Input Port      ; Output Port   ; RR     ; RF     ; FR     ; FF     ;
++-----------------+---------------+--------+--------+--------+--------+
+; instruction[3]  ; enDEC         ; 10.450 ;        ;        ; 10.450 ;
+; instruction[3]  ; enINC         ;        ; 11.182 ; 11.182 ;        ;
+; instruction[3]  ; enNEG         ; 10.507 ;        ;        ; 10.507 ;
+; instruction[3]  ; enOUT         ;        ; 9.868  ; 9.868  ;        ;
+; instruction[3]  ; enROL         ;        ; 10.129 ; 10.129 ;        ;
+; instruction[3]  ; enROR         ; 9.524  ;        ;        ; 9.524  ;
+; instruction[4]  ; enDEC         ;        ; 10.716 ; 10.716 ;        ;
+; instruction[4]  ; enINC         ;        ; 11.444 ; 11.444 ;        ;
+; instruction[4]  ; enNEG         ; 10.103 ;        ;        ; 10.103 ;
+; instruction[4]  ; enOUT         ;        ; 10.166 ; 10.166 ;        ;
+; instruction[4]  ; enROL         ;        ; 10.754 ; 10.754 ;        ;
+; instruction[4]  ; enROR         ;        ; 10.128 ; 10.128 ;        ;
+; instruction[5]  ; enDEC         ;        ; 12.746 ; 12.746 ;        ;
+; instruction[5]  ; enINC         ;        ; 13.474 ; 13.474 ;        ;
+; instruction[5]  ; enNEG         ;        ; 11.444 ; 11.444 ;        ;
+; instruction[5]  ; enOUT         ;        ; 12.196 ; 12.196 ;        ;
+; instruction[5]  ; enROL         ;        ; 11.994 ; 11.994 ;        ;
+; instruction[5]  ; enROR         ;        ; 11.364 ; 11.364 ;        ;
+; instruction[6]  ; enADD         ; 6.791  ;        ;        ; 6.791  ;
+; instruction[6]  ; enDEC         ; 6.861  ;        ;        ; 6.861  ;
+; instruction[6]  ; enINC         ; 7.589  ;        ;        ; 7.589  ;
+; instruction[6]  ; enMOVREGTOREG ; 8.426  ;        ;        ; 8.426  ;
+; instruction[6]  ; enNEG         ; 5.563  ;        ;        ; 5.563  ;
+; instruction[6]  ; enOUT         ; 6.311  ;        ;        ; 6.311  ;
+; instruction[6]  ; enROL         ; 8.464  ;        ;        ; 8.464  ;
+; instruction[6]  ; enROR         ; 7.859  ;        ;        ; 7.859  ;
+; instruction[6]  ; enXOR         ; 7.573  ;        ;        ; 7.573  ;
+; instruction[7]  ; enADD         ; 6.809  ;        ;        ; 6.809  ;
+; instruction[7]  ; enDEC         ; 6.881  ;        ;        ; 6.881  ;
+; instruction[7]  ; enINC         ; 7.609  ;        ;        ; 7.609  ;
+; instruction[7]  ; enMOVREGTOREG ; 8.444  ;        ;        ; 8.444  ;
+; instruction[7]  ; enNEG         ; 5.583  ;        ;        ; 5.583  ;
+; instruction[7]  ; enOUT         ; 6.331  ;        ;        ; 6.331  ;
+; instruction[7]  ; enROL         ; 8.482  ;        ;        ; 8.482  ;
+; instruction[7]  ; enROR         ; 7.877  ;        ;        ; 7.877  ;
+; instruction[7]  ; enXOR         ; 7.591  ;        ;        ; 7.591  ;
+; instruction[8]  ; enADD         ;        ; 11.088 ; 11.088 ;        ;
+; instruction[8]  ; enDEC         ;        ; 11.158 ; 11.158 ;        ;
+; instruction[8]  ; enINC         ;        ; 11.886 ; 11.886 ;        ;
+; instruction[8]  ; enMOVREGTOREG ;        ; 12.723 ; 12.723 ;        ;
+; instruction[8]  ; enNEG         ;        ; 9.860  ; 9.860  ;        ;
+; instruction[8]  ; enOUT         ;        ; 10.608 ; 10.608 ;        ;
+; instruction[8]  ; enROL         ;        ; 12.761 ; 12.761 ;        ;
+; instruction[8]  ; enROR         ;        ; 12.156 ; 12.156 ;        ;
+; instruction[8]  ; enXOR         ;        ; 11.870 ; 11.870 ;        ;
+; instruction[9]  ; enADD         ;        ; 6.620  ; 6.620  ;        ;
+; instruction[9]  ; enDEC         ; 6.691  ;        ;        ; 6.691  ;
+; instruction[9]  ; enINC         ; 7.419  ;        ;        ; 7.419  ;
+; instruction[9]  ; enMOVREGTOREG ;        ; 8.255  ; 8.255  ;        ;
+; instruction[9]  ; enNEG         ; 5.393  ;        ;        ; 5.393  ;
+; instruction[9]  ; enOUT         ; 6.141  ;        ;        ; 6.141  ;
+; instruction[9]  ; enROL         ;        ; 8.293  ; 8.293  ;        ;
+; instruction[9]  ; enROR         ;        ; 7.688  ; 7.688  ;        ;
+; instruction[9]  ; enXOR         ;        ; 7.402  ; 7.402  ;        ;
+; instruction[10] ; enADD         ;        ; 9.976  ; 9.976  ;        ;
+; instruction[10] ; enDEC         ; 11.894 ;        ;        ; 11.894 ;
+; instruction[10] ; enINC         ; 12.622 ;        ;        ; 12.622 ;
+; instruction[10] ; enMOVREGTOREG ;        ; 11.777 ; 11.777 ;        ;
+; instruction[10] ; enNEG         ; 10.592 ;        ;        ; 10.592 ;
+; instruction[10] ; enOUT         ; 11.344 ;        ;        ; 11.344 ;
+; instruction[10] ; enROL         ;        ; 11.111 ; 11.111 ;        ;
+; instruction[10] ; enROR         ;        ; 10.506 ; 10.506 ;        ;
+; instruction[10] ; enXOR         ;        ; 10.217 ; 10.217 ;        ;
+; instruction[11] ; enADD         ;        ; 6.061  ; 6.061  ;        ;
+; instruction[11] ; enDEC         ; 5.701  ;        ;        ; 5.701  ;
+; instruction[11] ; enINC         ; 6.427  ;        ;        ; 6.427  ;
+; instruction[11] ; enMOVDATA     ;        ; 6.056  ; 6.056  ;        ;
+; instruction[11] ; enMOVREGTOREG ; 7.440  ;        ;        ; 7.440  ;
+; instruction[11] ; enNEG         ;        ; 5.739  ; 5.739  ;        ;
+; instruction[11] ; enOUT         ;        ; 5.103  ; 5.103  ;        ;
+; instruction[11] ; enROL         ;        ; 6.409  ; 6.409  ;        ;
+; instruction[11] ; enROR         ;        ; 5.783  ; 5.783  ;        ;
+; instruction[11] ; enXOR         ;        ; 7.396  ; 7.396  ;        ;
+; instruction[12] ; enADD         ;        ; 10.379 ; 10.379 ;        ;
+; instruction[12] ; enDEC         ; 10.314 ;        ;        ; 10.314 ;
+; instruction[12] ; enINC         ; 11.045 ;        ;        ; 11.045 ;
+; instruction[12] ; enMOVDATA     ; 10.149 ;        ;        ; 10.149 ;
+; instruction[12] ; enMOVREGTOREG ;        ; 11.654 ; 11.654 ;        ;
+; instruction[12] ; enNEG         ; 10.375 ;        ;        ; 10.375 ;
+; instruction[12] ; enOUT         ;        ; 9.735  ; 9.735  ;        ;
+; instruction[12] ; enROL         ; 11.043 ;        ;        ; 11.043 ;
+; instruction[12] ; enROR         ; 10.417 ;        ;        ; 10.417 ;
+; instruction[12] ; enXOR         ; 11.073 ;        ;        ; 11.073 ;
+; instruction[13] ; enADD         ;        ; 10.996 ; 10.996 ;        ;
+; instruction[13] ; enDEC         ; 12.925 ;        ;        ; 12.925 ;
+; instruction[13] ; enINC         ; 13.653 ;        ;        ; 13.653 ;
+; instruction[13] ; enMOVDATA     ; 10.215 ;        ;        ; 10.215 ;
+; instruction[13] ; enMOVREGTOREG ;        ; 12.795 ; 12.795 ;        ;
+; instruction[13] ; enNEG         ; 11.623 ;        ;        ; 11.623 ;
+; instruction[13] ; enOUT         ; 12.375 ;        ;        ; 12.375 ;
+; instruction[13] ; enROL         ;        ; 12.127 ; 12.127 ;        ;
+; instruction[13] ; enROR         ;        ; 11.522 ; 11.522 ;        ;
+; instruction[13] ; enXOR         ; 11.807 ;        ;        ; 11.807 ;
+; instruction[14] ; enADD         ;        ; 10.936 ; 10.936 ;        ;
+; instruction[14] ; enDEC         ; 12.365 ;        ;        ; 12.365 ;
+; instruction[14] ; enINC         ; 13.093 ;        ;        ; 13.093 ;
+; instruction[14] ; enMOVDATA     ;        ; 10.030 ; 10.030 ;        ;
+; instruction[14] ; enMOVREGTOREG ;        ; 12.211 ; 12.211 ;        ;
+; instruction[14] ; enNEG         ; 11.063 ;        ;        ; 11.063 ;
+; instruction[14] ; enOUT         ; 11.815 ;        ;        ; 11.815 ;
+; instruction[14] ; enROL         ; 11.708 ;        ;        ; 11.708 ;
+; instruction[14] ; enROR         ; 11.078 ;        ;        ; 11.078 ;
+; instruction[14] ; enXOR         ;        ; 11.622 ; 11.622 ;        ;
+; instruction[15] ; enADD         ;        ; 10.099 ; 10.099 ;        ;
+; instruction[15] ; enDEC         ; 10.573 ;        ;        ; 10.573 ;
+; instruction[15] ; enINC         ; 11.301 ;        ;        ; 11.301 ;
+; instruction[15] ; enMOVDATA     ; 9.846  ;        ;        ; 9.846  ;
+; instruction[15] ; enMOVREGTOREG ; 11.900 ;        ;        ; 11.900 ;
+; instruction[15] ; enNEG         ; 9.272  ;        ;        ; 9.272  ;
+; instruction[15] ; enOUT         ; 10.023 ;        ;        ; 10.023 ;
+; instruction[15] ; enROL         ; 10.611 ;        ;        ; 10.611 ;
+; instruction[15] ; enROR         ; 9.985  ;        ;        ; 9.985  ;
+; instruction[15] ; enXOR         ;        ; 10.347 ; 10.347 ;        ;
++-----------------+---------------+--------+--------+--------+--------+
+
+
+----------------------------
+; Fast Model Setup Summary ;
+----------------------------
+No paths to report.
+
+
+---------------------------
+; Fast Model Hold Summary ;
+---------------------------
+No paths to report.
+
+
+-------------------------------
+; Fast Model Recovery Summary ;
+-------------------------------
+No paths to report.
+
+
+------------------------------
+; Fast Model Removal Summary ;
+------------------------------
+No paths to report.
+
+
+------------------------------------------
+; Fast Model Minimum Pulse Width Summary ;
+------------------------------------------
+No paths to report.
+
+
++-----------------------------------------------------------------+
+; Propagation Delay                                               ;
++-----------------+---------------+-------+-------+-------+-------+
+; Input Port      ; Output Port   ; RR    ; RF    ; FR    ; FF    ;
++-----------------+---------------+-------+-------+-------+-------+
+; instruction[3]  ; enDEC         ; 5.802 ;       ;       ; 5.802 ;
+; instruction[3]  ; enINC         ;       ; 6.139 ; 6.139 ;       ;
+; instruction[3]  ; enNEG         ; 5.756 ;       ;       ; 5.756 ;
+; instruction[3]  ; enOUT         ;       ; 5.446 ; 5.446 ;       ;
+; instruction[3]  ; enROL         ;       ; 5.646 ; 5.646 ;       ;
+; instruction[3]  ; enROR         ; 5.299 ;       ;       ; 5.299 ;
+; instruction[4]  ; enDEC         ;       ; 5.916 ; 5.916 ;       ;
+; instruction[4]  ; enINC         ;       ; 6.279 ; 6.279 ;       ;
+; instruction[4]  ; enNEG         ; 5.574 ;       ;       ; 5.574 ;
+; instruction[4]  ; enOUT         ;       ; 5.588 ; 5.588 ;       ;
+; instruction[4]  ; enROL         ;       ; 5.925 ; 5.925 ;       ;
+; instruction[4]  ; enROR         ;       ; 5.585 ; 5.585 ;       ;
+; instruction[5]  ; enDEC         ;       ; 6.851 ; 6.851 ;       ;
+; instruction[5]  ; enINC         ;       ; 7.214 ; 7.214 ;       ;
+; instruction[5]  ; enNEG         ;       ; 6.198 ; 6.198 ;       ;
+; instruction[5]  ; enOUT         ;       ; 6.523 ; 6.523 ;       ;
+; instruction[5]  ; enROL         ;       ; 6.473 ; 6.473 ;       ;
+; instruction[5]  ; enROR         ;       ; 6.127 ; 6.127 ;       ;
+; instruction[6]  ; enADD         ; 3.495 ;       ;       ; 3.495 ;
+; instruction[6]  ; enDEC         ; 3.498 ;       ;       ; 3.498 ;
+; instruction[6]  ; enINC         ; 3.861 ;       ;       ; 3.861 ;
+; instruction[6]  ; enMOVREGTOREG ; 4.253 ;       ;       ; 4.253 ;
+; instruction[6]  ; enNEG         ; 2.854 ;       ;       ; 2.854 ;
+; instruction[6]  ; enOUT         ; 3.170 ;       ;       ; 3.170 ;
+; instruction[6]  ; enROL         ; 4.252 ;       ;       ; 4.252 ;
+; instruction[6]  ; enROR         ; 3.902 ;       ;       ; 3.902 ;
+; instruction[6]  ; enXOR         ; 3.872 ;       ;       ; 3.872 ;
+; instruction[7]  ; enADD         ; 3.500 ;       ;       ; 3.500 ;
+; instruction[7]  ; enDEC         ; 3.503 ;       ;       ; 3.503 ;
+; instruction[7]  ; enINC         ; 3.866 ;       ;       ; 3.866 ;
+; instruction[7]  ; enMOVREGTOREG ; 4.258 ;       ;       ; 4.258 ;
+; instruction[7]  ; enNEG         ; 2.859 ;       ;       ; 2.859 ;
+; instruction[7]  ; enOUT         ; 3.175 ;       ;       ; 3.175 ;
+; instruction[7]  ; enROL         ; 4.257 ;       ;       ; 4.257 ;
+; instruction[7]  ; enROR         ; 3.907 ;       ;       ; 3.907 ;
+; instruction[7]  ; enXOR         ; 3.877 ;       ;       ; 3.877 ;
+; instruction[8]  ; enADD         ;       ; 6.101 ; 6.101 ;       ;
+; instruction[8]  ; enDEC         ;       ; 6.104 ; 6.104 ;       ;
+; instruction[8]  ; enINC         ;       ; 6.467 ; 6.467 ;       ;
+; instruction[8]  ; enMOVREGTOREG ;       ; 6.859 ; 6.859 ;       ;
+; instruction[8]  ; enNEG         ;       ; 5.460 ; 5.460 ;       ;
+; instruction[8]  ; enOUT         ;       ; 5.776 ; 5.776 ;       ;
+; instruction[8]  ; enROL         ;       ; 6.858 ; 6.858 ;       ;
+; instruction[8]  ; enROR         ;       ; 6.508 ; 6.508 ;       ;
+; instruction[8]  ; enXOR         ;       ; 6.478 ; 6.478 ;       ;
+; instruction[9]  ; enADD         ;       ; 3.408 ; 3.408 ;       ;
+; instruction[9]  ; enDEC         ; 3.436 ;       ;       ; 3.436 ;
+; instruction[9]  ; enINC         ; 3.799 ;       ;       ; 3.799 ;
+; instruction[9]  ; enMOVREGTOREG ;       ; 4.166 ; 4.166 ;       ;
+; instruction[9]  ; enNEG         ; 2.792 ;       ;       ; 2.792 ;
+; instruction[9]  ; enOUT         ; 3.108 ;       ;       ; 3.108 ;
+; instruction[9]  ; enROL         ;       ; 4.165 ; 4.165 ;       ;
+; instruction[9]  ; enROR         ;       ; 3.815 ; 3.815 ;       ;
+; instruction[9]  ; enXOR         ;       ; 3.785 ; 3.785 ;       ;
+; instruction[10] ; enADD         ;       ; 5.563 ; 5.563 ;       ;
+; instruction[10] ; enDEC         ; 6.458 ;       ;       ; 6.458 ;
+; instruction[10] ; enINC         ; 6.821 ;       ;       ; 6.821 ;
+; instruction[10] ; enMOVREGTOREG ;       ; 6.406 ; 6.406 ;       ;
+; instruction[10] ; enNEG         ; 5.805 ;       ;       ; 5.805 ;
+; instruction[10] ; enOUT         ; 6.130 ;       ;       ; 6.130 ;
+; instruction[10] ; enROL         ;       ; 6.097 ; 6.097 ;       ;
+; instruction[10] ; enROR         ;       ; 5.747 ; 5.747 ;       ;
+; instruction[10] ; enXOR         ;       ; 5.722 ; 5.722 ;       ;
+; instruction[11] ; enADD         ;       ; 3.177 ; 3.177 ;       ;
+; instruction[11] ; enDEC         ; 3.009 ;       ;       ; 3.009 ;
+; instruction[11] ; enINC         ; 3.372 ;       ;       ; 3.372 ;
+; instruction[11] ; enMOVDATA     ;       ; 3.133 ; 3.133 ;       ;
+; instruction[11] ; enMOVREGTOREG ; 3.831 ;       ;       ; 3.831 ;
+; instruction[11] ; enNEG         ;       ; 2.965 ; 2.965 ;       ;
+; instruction[11] ; enOUT         ;       ; 2.679 ; 2.679 ;       ;
+; instruction[11] ; enROL         ;       ; 3.324 ; 3.324 ;       ;
+; instruction[11] ; enROR         ;       ; 2.984 ; 2.984 ;       ;
+; instruction[11] ; enXOR         ;       ; 3.803 ; 3.803 ;       ;
+; instruction[12] ; enADD         ;       ; 5.762 ; 5.762 ;       ;
+; instruction[12] ; enDEC         ; 5.739 ;       ;       ; 5.739 ;
+; instruction[12] ; enINC         ; 6.103 ;       ;       ; 6.103 ;
+; instruction[12] ; enMOVDATA     ; 5.648 ;       ;       ; 5.648 ;
+; instruction[12] ; enMOVREGTOREG ;       ; 6.349 ; 6.349 ;       ;
+; instruction[12] ; enNEG         ; 5.700 ;       ;       ; 5.700 ;
+; instruction[12] ; enOUT         ;       ; 5.412 ; 5.412 ;       ;
+; instruction[12] ; enROL         ; 6.060 ;       ;       ; 6.060 ;
+; instruction[12] ; enROR         ; 5.720 ;       ;       ; 5.720 ;
+; instruction[12] ; enXOR         ; 6.099 ;       ;       ; 6.099 ;
+; instruction[13] ; enADD         ;       ; 6.069 ; 6.069 ;       ;
+; instruction[13] ; enDEC         ; 6.942 ;       ;       ; 6.942 ;
+; instruction[13] ; enINC         ; 7.305 ;       ;       ; 7.305 ;
+; instruction[13] ; enMOVDATA     ; 5.724 ;       ;       ; 5.724 ;
+; instruction[13] ; enMOVREGTOREG ;       ; 6.908 ; 6.908 ;       ;
+; instruction[13] ; enNEG         ; 6.289 ;       ;       ; 6.289 ;
+; instruction[13] ; enOUT         ; 6.614 ;       ;       ; 6.614 ;
+; instruction[13] ; enROL         ;       ; 6.598 ; 6.598 ;       ;
+; instruction[13] ; enROR         ;       ; 6.248 ; 6.248 ;       ;
+; instruction[13] ; enXOR         ; 6.473 ;       ;       ; 6.473 ;
+; instruction[14] ; enADD         ;       ; 6.025 ; 6.025 ;       ;
+; instruction[14] ; enDEC         ; 6.648 ;       ;       ; 6.648 ;
+; instruction[14] ; enINC         ; 7.011 ;       ;       ; 7.011 ;
+; instruction[14] ; enMOVDATA     ;       ; 5.608 ; 5.608 ;       ;
+; instruction[14] ; enMOVREGTOREG ;       ; 6.612 ; 6.612 ;       ;
+; instruction[14] ; enNEG         ; 5.995 ;       ;       ; 5.995 ;
+; instruction[14] ; enOUT         ; 6.320 ;       ;       ; 6.320 ;
+; instruction[14] ; enROL         ; 6.344 ;       ;       ; 6.344 ;
+; instruction[14] ; enROR         ; 5.998 ;       ;       ; 5.998 ;
+; instruction[14] ; enXOR         ;       ; 6.357 ; 6.357 ;       ;
+; instruction[15] ; enADD         ;       ; 5.610 ; 5.610 ;       ;
+; instruction[15] ; enDEC         ; 5.860 ;       ;       ; 5.860 ;
+; instruction[15] ; enINC         ; 6.223 ;       ;       ; 6.223 ;
+; instruction[15] ; enMOVDATA     ; 5.490 ;       ;       ; 5.490 ;
+; instruction[15] ; enMOVREGTOREG ; 6.460 ;       ;       ; 6.460 ;
+; instruction[15] ; enNEG         ; 5.210 ;       ;       ; 5.210 ;
+; instruction[15] ; enOUT         ; 5.532 ;       ;       ; 5.532 ;
+; instruction[15] ; enROL         ; 5.869 ;       ;       ; 5.869 ;
+; instruction[15] ; enROR         ; 5.529 ;       ;       ; 5.529 ;
+; instruction[15] ; enXOR         ;       ; 5.778 ; 5.778 ;       ;
++-----------------+---------------+-------+-------+-------+-------+
+
+
++-----------------------------------------------------------------+
+; Minimum Propagation Delay                                       ;
++-----------------+---------------+-------+-------+-------+-------+
+; Input Port      ; Output Port   ; RR    ; RF    ; FR    ; FF    ;
++-----------------+---------------+-------+-------+-------+-------+
+; instruction[3]  ; enDEC         ; 5.802 ;       ;       ; 5.802 ;
+; instruction[3]  ; enINC         ;       ; 6.139 ; 6.139 ;       ;
+; instruction[3]  ; enNEG         ; 5.756 ;       ;       ; 5.756 ;
+; instruction[3]  ; enOUT         ;       ; 5.446 ; 5.446 ;       ;
+; instruction[3]  ; enROL         ;       ; 5.646 ; 5.646 ;       ;
+; instruction[3]  ; enROR         ; 5.299 ;       ;       ; 5.299 ;
+; instruction[4]  ; enDEC         ;       ; 5.916 ; 5.916 ;       ;
+; instruction[4]  ; enINC         ;       ; 6.279 ; 6.279 ;       ;
+; instruction[4]  ; enNEG         ; 5.574 ;       ;       ; 5.574 ;
+; instruction[4]  ; enOUT         ;       ; 5.588 ; 5.588 ;       ;
+; instruction[4]  ; enROL         ;       ; 5.925 ; 5.925 ;       ;
+; instruction[4]  ; enROR         ;       ; 5.585 ; 5.585 ;       ;
+; instruction[5]  ; enDEC         ;       ; 6.851 ; 6.851 ;       ;
+; instruction[5]  ; enINC         ;       ; 7.214 ; 7.214 ;       ;
+; instruction[5]  ; enNEG         ;       ; 6.198 ; 6.198 ;       ;
+; instruction[5]  ; enOUT         ;       ; 6.523 ; 6.523 ;       ;
+; instruction[5]  ; enROL         ;       ; 6.473 ; 6.473 ;       ;
+; instruction[5]  ; enROR         ;       ; 6.127 ; 6.127 ;       ;
+; instruction[6]  ; enADD         ; 3.495 ;       ;       ; 3.495 ;
+; instruction[6]  ; enDEC         ; 3.498 ;       ;       ; 3.498 ;
+; instruction[6]  ; enINC         ; 3.861 ;       ;       ; 3.861 ;
+; instruction[6]  ; enMOVREGTOREG ; 4.253 ;       ;       ; 4.253 ;
+; instruction[6]  ; enNEG         ; 2.854 ;       ;       ; 2.854 ;
+; instruction[6]  ; enOUT         ; 3.170 ;       ;       ; 3.170 ;
+; instruction[6]  ; enROL         ; 4.252 ;       ;       ; 4.252 ;
+; instruction[6]  ; enROR         ; 3.902 ;       ;       ; 3.902 ;
+; instruction[6]  ; enXOR         ; 3.872 ;       ;       ; 3.872 ;
+; instruction[7]  ; enADD         ; 3.500 ;       ;       ; 3.500 ;
+; instruction[7]  ; enDEC         ; 3.503 ;       ;       ; 3.503 ;
+; instruction[7]  ; enINC         ; 3.866 ;       ;       ; 3.866 ;
+; instruction[7]  ; enMOVREGTOREG ; 4.258 ;       ;       ; 4.258 ;
+; instruction[7]  ; enNEG         ; 2.859 ;       ;       ; 2.859 ;
+; instruction[7]  ; enOUT         ; 3.175 ;       ;       ; 3.175 ;
+; instruction[7]  ; enROL         ; 4.257 ;       ;       ; 4.257 ;
+; instruction[7]  ; enROR         ; 3.907 ;       ;       ; 3.907 ;
+; instruction[7]  ; enXOR         ; 3.877 ;       ;       ; 3.877 ;
+; instruction[8]  ; enADD         ;       ; 6.101 ; 6.101 ;       ;
+; instruction[8]  ; enDEC         ;       ; 6.104 ; 6.104 ;       ;
+; instruction[8]  ; enINC         ;       ; 6.467 ; 6.467 ;       ;
+; instruction[8]  ; enMOVREGTOREG ;       ; 6.859 ; 6.859 ;       ;
+; instruction[8]  ; enNEG         ;       ; 5.460 ; 5.460 ;       ;
+; instruction[8]  ; enOUT         ;       ; 5.776 ; 5.776 ;       ;
+; instruction[8]  ; enROL         ;       ; 6.858 ; 6.858 ;       ;
+; instruction[8]  ; enROR         ;       ; 6.508 ; 6.508 ;       ;
+; instruction[8]  ; enXOR         ;       ; 6.478 ; 6.478 ;       ;
+; instruction[9]  ; enADD         ;       ; 3.408 ; 3.408 ;       ;
+; instruction[9]  ; enDEC         ; 3.436 ;       ;       ; 3.436 ;
+; instruction[9]  ; enINC         ; 3.799 ;       ;       ; 3.799 ;
+; instruction[9]  ; enMOVREGTOREG ;       ; 4.166 ; 4.166 ;       ;
+; instruction[9]  ; enNEG         ; 2.792 ;       ;       ; 2.792 ;
+; instruction[9]  ; enOUT         ; 3.108 ;       ;       ; 3.108 ;
+; instruction[9]  ; enROL         ;       ; 4.165 ; 4.165 ;       ;
+; instruction[9]  ; enROR         ;       ; 3.815 ; 3.815 ;       ;
+; instruction[9]  ; enXOR         ;       ; 3.785 ; 3.785 ;       ;
+; instruction[10] ; enADD         ;       ; 5.563 ; 5.563 ;       ;
+; instruction[10] ; enDEC         ; 6.458 ;       ;       ; 6.458 ;
+; instruction[10] ; enINC         ; 6.821 ;       ;       ; 6.821 ;
+; instruction[10] ; enMOVREGTOREG ;       ; 6.406 ; 6.406 ;       ;
+; instruction[10] ; enNEG         ; 5.805 ;       ;       ; 5.805 ;
+; instruction[10] ; enOUT         ; 6.130 ;       ;       ; 6.130 ;
+; instruction[10] ; enROL         ;       ; 6.097 ; 6.097 ;       ;
+; instruction[10] ; enROR         ;       ; 5.747 ; 5.747 ;       ;
+; instruction[10] ; enXOR         ;       ; 5.722 ; 5.722 ;       ;
+; instruction[11] ; enADD         ;       ; 3.177 ; 3.177 ;       ;
+; instruction[11] ; enDEC         ; 3.009 ;       ;       ; 3.009 ;
+; instruction[11] ; enINC         ; 3.372 ;       ;       ; 3.372 ;
+; instruction[11] ; enMOVDATA     ;       ; 3.133 ; 3.133 ;       ;
+; instruction[11] ; enMOVREGTOREG ; 3.831 ;       ;       ; 3.831 ;
+; instruction[11] ; enNEG         ;       ; 2.965 ; 2.965 ;       ;
+; instruction[11] ; enOUT         ;       ; 2.679 ; 2.679 ;       ;
+; instruction[11] ; enROL         ;       ; 3.324 ; 3.324 ;       ;
+; instruction[11] ; enROR         ;       ; 2.984 ; 2.984 ;       ;
+; instruction[11] ; enXOR         ;       ; 3.803 ; 3.803 ;       ;
+; instruction[12] ; enADD         ;       ; 5.762 ; 5.762 ;       ;
+; instruction[12] ; enDEC         ; 5.739 ;       ;       ; 5.739 ;
+; instruction[12] ; enINC         ; 6.103 ;       ;       ; 6.103 ;
+; instruction[12] ; enMOVDATA     ; 5.648 ;       ;       ; 5.648 ;
+; instruction[12] ; enMOVREGTOREG ;       ; 6.349 ; 6.349 ;       ;
+; instruction[12] ; enNEG         ; 5.700 ;       ;       ; 5.700 ;
+; instruction[12] ; enOUT         ;       ; 5.412 ; 5.412 ;       ;
+; instruction[12] ; enROL         ; 6.060 ;       ;       ; 6.060 ;
+; instruction[12] ; enROR         ; 5.720 ;       ;       ; 5.720 ;
+; instruction[12] ; enXOR         ; 6.099 ;       ;       ; 6.099 ;
+; instruction[13] ; enADD         ;       ; 6.069 ; 6.069 ;       ;
+; instruction[13] ; enDEC         ; 6.942 ;       ;       ; 6.942 ;
+; instruction[13] ; enINC         ; 7.305 ;       ;       ; 7.305 ;
+; instruction[13] ; enMOVDATA     ; 5.724 ;       ;       ; 5.724 ;
+; instruction[13] ; enMOVREGTOREG ;       ; 6.908 ; 6.908 ;       ;
+; instruction[13] ; enNEG         ; 6.289 ;       ;       ; 6.289 ;
+; instruction[13] ; enOUT         ; 6.614 ;       ;       ; 6.614 ;
+; instruction[13] ; enROL         ;       ; 6.598 ; 6.598 ;       ;
+; instruction[13] ; enROR         ;       ; 6.248 ; 6.248 ;       ;
+; instruction[13] ; enXOR         ; 6.473 ;       ;       ; 6.473 ;
+; instruction[14] ; enADD         ;       ; 6.025 ; 6.025 ;       ;
+; instruction[14] ; enDEC         ; 6.648 ;       ;       ; 6.648 ;
+; instruction[14] ; enINC         ; 7.011 ;       ;       ; 7.011 ;
+; instruction[14] ; enMOVDATA     ;       ; 5.608 ; 5.608 ;       ;
+; instruction[14] ; enMOVREGTOREG ;       ; 6.612 ; 6.612 ;       ;
+; instruction[14] ; enNEG         ; 5.995 ;       ;       ; 5.995 ;
+; instruction[14] ; enOUT         ; 6.320 ;       ;       ; 6.320 ;
+; instruction[14] ; enROL         ; 6.344 ;       ;       ; 6.344 ;
+; instruction[14] ; enROR         ; 5.998 ;       ;       ; 5.998 ;
+; instruction[14] ; enXOR         ;       ; 6.357 ; 6.357 ;       ;
+; instruction[15] ; enADD         ;       ; 5.610 ; 5.610 ;       ;
+; instruction[15] ; enDEC         ; 5.860 ;       ;       ; 5.860 ;
+; instruction[15] ; enINC         ; 6.223 ;       ;       ; 6.223 ;
+; instruction[15] ; enMOVDATA     ; 5.490 ;       ;       ; 5.490 ;
+; instruction[15] ; enMOVREGTOREG ; 6.460 ;       ;       ; 6.460 ;
+; instruction[15] ; enNEG         ; 5.210 ;       ;       ; 5.210 ;
+; instruction[15] ; enOUT         ; 5.532 ;       ;       ; 5.532 ;
+; instruction[15] ; enROL         ; 5.869 ;       ;       ; 5.869 ;
+; instruction[15] ; enROR         ; 5.529 ;       ;       ; 5.529 ;
+; instruction[15] ; enXOR         ;       ; 5.778 ; 5.778 ;       ;
++-----------------+---------------+-------+-------+-------+-------+
+
+
++----------------------------------------------------------------------------+
+; Multicorner Timing Analysis Summary                                        ;
++------------------+-------+------+----------+---------+---------------------+
+; Clock            ; Setup ; Hold ; Recovery ; Removal ; Minimum Pulse Width ;
++------------------+-------+------+----------+---------+---------------------+
+; Worst-case Slack ; N/A   ; N/A  ; N/A      ; N/A     ; N/A                 ;
+; Design-wide TNS  ; 0.0   ; 0.0  ; 0.0      ; 0.0     ; 0.0                 ;
++------------------+-------+------+----------+---------+---------------------+
+
+
++---------------------------------------------------------------------+
+; Progagation Delay                                                   ;
++-----------------+---------------+--------+--------+--------+--------+
+; Input Port      ; Output Port   ; RR     ; RF     ; FR     ; FF     ;
++-----------------+---------------+--------+--------+--------+--------+
+; instruction[3]  ; enDEC         ; 10.450 ;        ;        ; 10.450 ;
+; instruction[3]  ; enINC         ;        ; 11.182 ; 11.182 ;        ;
+; instruction[3]  ; enNEG         ; 10.507 ;        ;        ; 10.507 ;
+; instruction[3]  ; enOUT         ;        ; 9.868  ; 9.868  ;        ;
+; instruction[3]  ; enROL         ;        ; 10.129 ; 10.129 ;        ;
+; instruction[3]  ; enROR         ; 9.524  ;        ;        ; 9.524  ;
+; instruction[4]  ; enDEC         ;        ; 10.716 ; 10.716 ;        ;
+; instruction[4]  ; enINC         ;        ; 11.444 ; 11.444 ;        ;
+; instruction[4]  ; enNEG         ; 10.103 ;        ;        ; 10.103 ;
+; instruction[4]  ; enOUT         ;        ; 10.166 ; 10.166 ;        ;
+; instruction[4]  ; enROL         ;        ; 10.754 ; 10.754 ;        ;
+; instruction[4]  ; enROR         ;        ; 10.128 ; 10.128 ;        ;
+; instruction[5]  ; enDEC         ;        ; 12.746 ; 12.746 ;        ;
+; instruction[5]  ; enINC         ;        ; 13.474 ; 13.474 ;        ;
+; instruction[5]  ; enNEG         ;        ; 11.444 ; 11.444 ;        ;
+; instruction[5]  ; enOUT         ;        ; 12.196 ; 12.196 ;        ;
+; instruction[5]  ; enROL         ;        ; 11.994 ; 11.994 ;        ;
+; instruction[5]  ; enROR         ;        ; 11.364 ; 11.364 ;        ;
+; instruction[6]  ; enADD         ; 6.791  ;        ;        ; 6.791  ;
+; instruction[6]  ; enDEC         ; 6.861  ;        ;        ; 6.861  ;
+; instruction[6]  ; enINC         ; 7.589  ;        ;        ; 7.589  ;
+; instruction[6]  ; enMOVREGTOREG ; 8.426  ;        ;        ; 8.426  ;
+; instruction[6]  ; enNEG         ; 5.563  ;        ;        ; 5.563  ;
+; instruction[6]  ; enOUT         ; 6.311  ;        ;        ; 6.311  ;
+; instruction[6]  ; enROL         ; 8.464  ;        ;        ; 8.464  ;
+; instruction[6]  ; enROR         ; 7.859  ;        ;        ; 7.859  ;
+; instruction[6]  ; enXOR         ; 7.573  ;        ;        ; 7.573  ;
+; instruction[7]  ; enADD         ; 6.809  ;        ;        ; 6.809  ;
+; instruction[7]  ; enDEC         ; 6.881  ;        ;        ; 6.881  ;
+; instruction[7]  ; enINC         ; 7.609  ;        ;        ; 7.609  ;
+; instruction[7]  ; enMOVREGTOREG ; 8.444  ;        ;        ; 8.444  ;
+; instruction[7]  ; enNEG         ; 5.583  ;        ;        ; 5.583  ;
+; instruction[7]  ; enOUT         ; 6.331  ;        ;        ; 6.331  ;
+; instruction[7]  ; enROL         ; 8.482  ;        ;        ; 8.482  ;
+; instruction[7]  ; enROR         ; 7.877  ;        ;        ; 7.877  ;
+; instruction[7]  ; enXOR         ; 7.591  ;        ;        ; 7.591  ;
+; instruction[8]  ; enADD         ;        ; 11.088 ; 11.088 ;        ;
+; instruction[8]  ; enDEC         ;        ; 11.158 ; 11.158 ;        ;
+; instruction[8]  ; enINC         ;        ; 11.886 ; 11.886 ;        ;
+; instruction[8]  ; enMOVREGTOREG ;        ; 12.723 ; 12.723 ;        ;
+; instruction[8]  ; enNEG         ;        ; 9.860  ; 9.860  ;        ;
+; instruction[8]  ; enOUT         ;        ; 10.608 ; 10.608 ;        ;
+; instruction[8]  ; enROL         ;        ; 12.761 ; 12.761 ;        ;
+; instruction[8]  ; enROR         ;        ; 12.156 ; 12.156 ;        ;
+; instruction[8]  ; enXOR         ;        ; 11.870 ; 11.870 ;        ;
+; instruction[9]  ; enADD         ;        ; 6.620  ; 6.620  ;        ;
+; instruction[9]  ; enDEC         ; 6.691  ;        ;        ; 6.691  ;
+; instruction[9]  ; enINC         ; 7.419  ;        ;        ; 7.419  ;
+; instruction[9]  ; enMOVREGTOREG ;        ; 8.255  ; 8.255  ;        ;
+; instruction[9]  ; enNEG         ; 5.393  ;        ;        ; 5.393  ;
+; instruction[9]  ; enOUT         ; 6.141  ;        ;        ; 6.141  ;
+; instruction[9]  ; enROL         ;        ; 8.293  ; 8.293  ;        ;
+; instruction[9]  ; enROR         ;        ; 7.688  ; 7.688  ;        ;
+; instruction[9]  ; enXOR         ;        ; 7.402  ; 7.402  ;        ;
+; instruction[10] ; enADD         ;        ; 9.976  ; 9.976  ;        ;
+; instruction[10] ; enDEC         ; 11.894 ;        ;        ; 11.894 ;
+; instruction[10] ; enINC         ; 12.622 ;        ;        ; 12.622 ;
+; instruction[10] ; enMOVREGTOREG ;        ; 11.777 ; 11.777 ;        ;
+; instruction[10] ; enNEG         ; 10.592 ;        ;        ; 10.592 ;
+; instruction[10] ; enOUT         ; 11.344 ;        ;        ; 11.344 ;
+; instruction[10] ; enROL         ;        ; 11.111 ; 11.111 ;        ;
+; instruction[10] ; enROR         ;        ; 10.506 ; 10.506 ;        ;
+; instruction[10] ; enXOR         ;        ; 10.217 ; 10.217 ;        ;
+; instruction[11] ; enADD         ;        ; 6.061  ; 6.061  ;        ;
+; instruction[11] ; enDEC         ; 5.701  ;        ;        ; 5.701  ;
+; instruction[11] ; enINC         ; 6.427  ;        ;        ; 6.427  ;
+; instruction[11] ; enMOVDATA     ;        ; 6.056  ; 6.056  ;        ;
+; instruction[11] ; enMOVREGTOREG ; 7.440  ;        ;        ; 7.440  ;
+; instruction[11] ; enNEG         ;        ; 5.739  ; 5.739  ;        ;
+; instruction[11] ; enOUT         ;        ; 5.103  ; 5.103  ;        ;
+; instruction[11] ; enROL         ;        ; 6.409  ; 6.409  ;        ;
+; instruction[11] ; enROR         ;        ; 5.783  ; 5.783  ;        ;
+; instruction[11] ; enXOR         ;        ; 7.396  ; 7.396  ;        ;
+; instruction[12] ; enADD         ;        ; 10.379 ; 10.379 ;        ;
+; instruction[12] ; enDEC         ; 10.314 ;        ;        ; 10.314 ;
+; instruction[12] ; enINC         ; 11.045 ;        ;        ; 11.045 ;
+; instruction[12] ; enMOVDATA     ; 10.149 ;        ;        ; 10.149 ;
+; instruction[12] ; enMOVREGTOREG ;        ; 11.654 ; 11.654 ;        ;
+; instruction[12] ; enNEG         ; 10.375 ;        ;        ; 10.375 ;
+; instruction[12] ; enOUT         ;        ; 9.735  ; 9.735  ;        ;
+; instruction[12] ; enROL         ; 11.043 ;        ;        ; 11.043 ;
+; instruction[12] ; enROR         ; 10.417 ;        ;        ; 10.417 ;
+; instruction[12] ; enXOR         ; 11.073 ;        ;        ; 11.073 ;
+; instruction[13] ; enADD         ;        ; 10.996 ; 10.996 ;        ;
+; instruction[13] ; enDEC         ; 12.925 ;        ;        ; 12.925 ;
+; instruction[13] ; enINC         ; 13.653 ;        ;        ; 13.653 ;
+; instruction[13] ; enMOVDATA     ; 10.215 ;        ;        ; 10.215 ;
+; instruction[13] ; enMOVREGTOREG ;        ; 12.795 ; 12.795 ;        ;
+; instruction[13] ; enNEG         ; 11.623 ;        ;        ; 11.623 ;
+; instruction[13] ; enOUT         ; 12.375 ;        ;        ; 12.375 ;
+; instruction[13] ; enROL         ;        ; 12.127 ; 12.127 ;        ;
+; instruction[13] ; enROR         ;        ; 11.522 ; 11.522 ;        ;
+; instruction[13] ; enXOR         ; 11.807 ;        ;        ; 11.807 ;
+; instruction[14] ; enADD         ;        ; 10.936 ; 10.936 ;        ;
+; instruction[14] ; enDEC         ; 12.365 ;        ;        ; 12.365 ;
+; instruction[14] ; enINC         ; 13.093 ;        ;        ; 13.093 ;
+; instruction[14] ; enMOVDATA     ;        ; 10.030 ; 10.030 ;        ;
+; instruction[14] ; enMOVREGTOREG ;        ; 12.211 ; 12.211 ;        ;
+; instruction[14] ; enNEG         ; 11.063 ;        ;        ; 11.063 ;
+; instruction[14] ; enOUT         ; 11.815 ;        ;        ; 11.815 ;
+; instruction[14] ; enROL         ; 11.708 ;        ;        ; 11.708 ;
+; instruction[14] ; enROR         ; 11.078 ;        ;        ; 11.078 ;
+; instruction[14] ; enXOR         ;        ; 11.622 ; 11.622 ;        ;
+; instruction[15] ; enADD         ;        ; 10.099 ; 10.099 ;        ;
+; instruction[15] ; enDEC         ; 10.573 ;        ;        ; 10.573 ;
+; instruction[15] ; enINC         ; 11.301 ;        ;        ; 11.301 ;
+; instruction[15] ; enMOVDATA     ; 9.846  ;        ;        ; 9.846  ;
+; instruction[15] ; enMOVREGTOREG ; 11.900 ;        ;        ; 11.900 ;
+; instruction[15] ; enNEG         ; 9.272  ;        ;        ; 9.272  ;
+; instruction[15] ; enOUT         ; 10.023 ;        ;        ; 10.023 ;
+; instruction[15] ; enROL         ; 10.611 ;        ;        ; 10.611 ;
+; instruction[15] ; enROR         ; 9.985  ;        ;        ; 9.985  ;
+; instruction[15] ; enXOR         ;        ; 10.347 ; 10.347 ;        ;
++-----------------+---------------+--------+--------+--------+--------+
+
+
++-----------------------------------------------------------------+
+; Minimum Progagation Delay                                       ;
++-----------------+---------------+-------+-------+-------+-------+
+; Input Port      ; Output Port   ; RR    ; RF    ; FR    ; FF    ;
++-----------------+---------------+-------+-------+-------+-------+
+; instruction[3]  ; enDEC         ; 5.802 ;       ;       ; 5.802 ;
+; instruction[3]  ; enINC         ;       ; 6.139 ; 6.139 ;       ;
+; instruction[3]  ; enNEG         ; 5.756 ;       ;       ; 5.756 ;
+; instruction[3]  ; enOUT         ;       ; 5.446 ; 5.446 ;       ;
+; instruction[3]  ; enROL         ;       ; 5.646 ; 5.646 ;       ;
+; instruction[3]  ; enROR         ; 5.299 ;       ;       ; 5.299 ;
+; instruction[4]  ; enDEC         ;       ; 5.916 ; 5.916 ;       ;
+; instruction[4]  ; enINC         ;       ; 6.279 ; 6.279 ;       ;
+; instruction[4]  ; enNEG         ; 5.574 ;       ;       ; 5.574 ;
+; instruction[4]  ; enOUT         ;       ; 5.588 ; 5.588 ;       ;
+; instruction[4]  ; enROL         ;       ; 5.925 ; 5.925 ;       ;
+; instruction[4]  ; enROR         ;       ; 5.585 ; 5.585 ;       ;
+; instruction[5]  ; enDEC         ;       ; 6.851 ; 6.851 ;       ;
+; instruction[5]  ; enINC         ;       ; 7.214 ; 7.214 ;       ;
+; instruction[5]  ; enNEG         ;       ; 6.198 ; 6.198 ;       ;
+; instruction[5]  ; enOUT         ;       ; 6.523 ; 6.523 ;       ;
+; instruction[5]  ; enROL         ;       ; 6.473 ; 6.473 ;       ;
+; instruction[5]  ; enROR         ;       ; 6.127 ; 6.127 ;       ;
+; instruction[6]  ; enADD         ; 3.495 ;       ;       ; 3.495 ;
+; instruction[6]  ; enDEC         ; 3.498 ;       ;       ; 3.498 ;
+; instruction[6]  ; enINC         ; 3.861 ;       ;       ; 3.861 ;
+; instruction[6]  ; enMOVREGTOREG ; 4.253 ;       ;       ; 4.253 ;
+; instruction[6]  ; enNEG         ; 2.854 ;       ;       ; 2.854 ;
+; instruction[6]  ; enOUT         ; 3.170 ;       ;       ; 3.170 ;
+; instruction[6]  ; enROL         ; 4.252 ;       ;       ; 4.252 ;
+; instruction[6]  ; enROR         ; 3.902 ;       ;       ; 3.902 ;
+; instruction[6]  ; enXOR         ; 3.872 ;       ;       ; 3.872 ;
+; instruction[7]  ; enADD         ; 3.500 ;       ;       ; 3.500 ;
+; instruction[7]  ; enDEC         ; 3.503 ;       ;       ; 3.503 ;
+; instruction[7]  ; enINC         ; 3.866 ;       ;       ; 3.866 ;
+; instruction[7]  ; enMOVREGTOREG ; 4.258 ;       ;       ; 4.258 ;
+; instruction[7]  ; enNEG         ; 2.859 ;       ;       ; 2.859 ;
+; instruction[7]  ; enOUT         ; 3.175 ;       ;       ; 3.175 ;
+; instruction[7]  ; enROL         ; 4.257 ;       ;       ; 4.257 ;
+; instruction[7]  ; enROR         ; 3.907 ;       ;       ; 3.907 ;
+; instruction[7]  ; enXOR         ; 3.877 ;       ;       ; 3.877 ;
+; instruction[8]  ; enADD         ;       ; 6.101 ; 6.101 ;       ;
+; instruction[8]  ; enDEC         ;       ; 6.104 ; 6.104 ;       ;
+; instruction[8]  ; enINC         ;       ; 6.467 ; 6.467 ;       ;
+; instruction[8]  ; enMOVREGTOREG ;       ; 6.859 ; 6.859 ;       ;
+; instruction[8]  ; enNEG         ;       ; 5.460 ; 5.460 ;       ;
+; instruction[8]  ; enOUT         ;       ; 5.776 ; 5.776 ;       ;
+; instruction[8]  ; enROL         ;       ; 6.858 ; 6.858 ;       ;
+; instruction[8]  ; enROR         ;       ; 6.508 ; 6.508 ;       ;
+; instruction[8]  ; enXOR         ;       ; 6.478 ; 6.478 ;       ;
+; instruction[9]  ; enADD         ;       ; 3.408 ; 3.408 ;       ;
+; instruction[9]  ; enDEC         ; 3.436 ;       ;       ; 3.436 ;
+; instruction[9]  ; enINC         ; 3.799 ;       ;       ; 3.799 ;
+; instruction[9]  ; enMOVREGTOREG ;       ; 4.166 ; 4.166 ;       ;
+; instruction[9]  ; enNEG         ; 2.792 ;       ;       ; 2.792 ;
+; instruction[9]  ; enOUT         ; 3.108 ;       ;       ; 3.108 ;
+; instruction[9]  ; enROL         ;       ; 4.165 ; 4.165 ;       ;
+; instruction[9]  ; enROR         ;       ; 3.815 ; 3.815 ;       ;
+; instruction[9]  ; enXOR         ;       ; 3.785 ; 3.785 ;       ;
+; instruction[10] ; enADD         ;       ; 5.563 ; 5.563 ;       ;
+; instruction[10] ; enDEC         ; 6.458 ;       ;       ; 6.458 ;
+; instruction[10] ; enINC         ; 6.821 ;       ;       ; 6.821 ;
+; instruction[10] ; enMOVREGTOREG ;       ; 6.406 ; 6.406 ;       ;
+; instruction[10] ; enNEG         ; 5.805 ;       ;       ; 5.805 ;
+; instruction[10] ; enOUT         ; 6.130 ;       ;       ; 6.130 ;
+; instruction[10] ; enROL         ;       ; 6.097 ; 6.097 ;       ;
+; instruction[10] ; enROR         ;       ; 5.747 ; 5.747 ;       ;
+; instruction[10] ; enXOR         ;       ; 5.722 ; 5.722 ;       ;
+; instruction[11] ; enADD         ;       ; 3.177 ; 3.177 ;       ;
+; instruction[11] ; enDEC         ; 3.009 ;       ;       ; 3.009 ;
+; instruction[11] ; enINC         ; 3.372 ;       ;       ; 3.372 ;
+; instruction[11] ; enMOVDATA     ;       ; 3.133 ; 3.133 ;       ;
+; instruction[11] ; enMOVREGTOREG ; 3.831 ;       ;       ; 3.831 ;
+; instruction[11] ; enNEG         ;       ; 2.965 ; 2.965 ;       ;
+; instruction[11] ; enOUT         ;       ; 2.679 ; 2.679 ;       ;
+; instruction[11] ; enROL         ;       ; 3.324 ; 3.324 ;       ;
+; instruction[11] ; enROR         ;       ; 2.984 ; 2.984 ;       ;
+; instruction[11] ; enXOR         ;       ; 3.803 ; 3.803 ;       ;
+; instruction[12] ; enADD         ;       ; 5.762 ; 5.762 ;       ;
+; instruction[12] ; enDEC         ; 5.739 ;       ;       ; 5.739 ;
+; instruction[12] ; enINC         ; 6.103 ;       ;       ; 6.103 ;
+; instruction[12] ; enMOVDATA     ; 5.648 ;       ;       ; 5.648 ;
+; instruction[12] ; enMOVREGTOREG ;       ; 6.349 ; 6.349 ;       ;
+; instruction[12] ; enNEG         ; 5.700 ;       ;       ; 5.700 ;
+; instruction[12] ; enOUT         ;       ; 5.412 ; 5.412 ;       ;
+; instruction[12] ; enROL         ; 6.060 ;       ;       ; 6.060 ;
+; instruction[12] ; enROR         ; 5.720 ;       ;       ; 5.720 ;
+; instruction[12] ; enXOR         ; 6.099 ;       ;       ; 6.099 ;
+; instruction[13] ; enADD         ;       ; 6.069 ; 6.069 ;       ;
+; instruction[13] ; enDEC         ; 6.942 ;       ;       ; 6.942 ;
+; instruction[13] ; enINC         ; 7.305 ;       ;       ; 7.305 ;
+; instruction[13] ; enMOVDATA     ; 5.724 ;       ;       ; 5.724 ;
+; instruction[13] ; enMOVREGTOREG ;       ; 6.908 ; 6.908 ;       ;
+; instruction[13] ; enNEG         ; 6.289 ;       ;       ; 6.289 ;
+; instruction[13] ; enOUT         ; 6.614 ;       ;       ; 6.614 ;
+; instruction[13] ; enROL         ;       ; 6.598 ; 6.598 ;       ;
+; instruction[13] ; enROR         ;       ; 6.248 ; 6.248 ;       ;
+; instruction[13] ; enXOR         ; 6.473 ;       ;       ; 6.473 ;
+; instruction[14] ; enADD         ;       ; 6.025 ; 6.025 ;       ;
+; instruction[14] ; enDEC         ; 6.648 ;       ;       ; 6.648 ;
+; instruction[14] ; enINC         ; 7.011 ;       ;       ; 7.011 ;
+; instruction[14] ; enMOVDATA     ;       ; 5.608 ; 5.608 ;       ;
+; instruction[14] ; enMOVREGTOREG ;       ; 6.612 ; 6.612 ;       ;
+; instruction[14] ; enNEG         ; 5.995 ;       ;       ; 5.995 ;
+; instruction[14] ; enOUT         ; 6.320 ;       ;       ; 6.320 ;
+; instruction[14] ; enROL         ; 6.344 ;       ;       ; 6.344 ;
+; instruction[14] ; enROR         ; 5.998 ;       ;       ; 5.998 ;
+; instruction[14] ; enXOR         ;       ; 6.357 ; 6.357 ;       ;
+; instruction[15] ; enADD         ;       ; 5.610 ; 5.610 ;       ;
+; instruction[15] ; enDEC         ; 5.860 ;       ;       ; 5.860 ;
+; instruction[15] ; enINC         ; 6.223 ;       ;       ; 6.223 ;
+; instruction[15] ; enMOVDATA     ; 5.490 ;       ;       ; 5.490 ;
+; instruction[15] ; enMOVREGTOREG ; 6.460 ;       ;       ; 6.460 ;
+; instruction[15] ; enNEG         ; 5.210 ;       ;       ; 5.210 ;
+; instruction[15] ; enOUT         ; 5.532 ;       ;       ; 5.532 ;
+; instruction[15] ; enROL         ; 5.869 ;       ;       ; 5.869 ;
+; instruction[15] ; enROR         ; 5.529 ;       ;       ; 5.529 ;
+; instruction[15] ; enXOR         ;       ; 5.778 ; 5.778 ;       ;
++-----------------+---------------+-------+-------+-------+-------+
+
+
+-------------------
+; Clock Transfers ;
+-------------------
+Nothing to report.
+
+
+---------------
+; Report TCCS ;
+---------------
+No dedicated SERDES Transmitter circuitry present in device or used in design
+
+
+---------------
+; Report RSKM ;
+---------------
+No dedicated SERDES Receiver circuitry present in device or used in design
+
+
++------------------------------------------------+
+; Unconstrained Paths                            ;
++---------------------------------+-------+------+
+; Property                        ; Setup ; Hold ;
++---------------------------------+-------+------+
+; Illegal Clocks                  ; 0     ; 0    ;
+; Unconstrained Clocks            ; 0     ; 0    ;
+; Unconstrained Input Ports       ; 13    ; 13   ;
+; Unconstrained Input Port Paths  ; 113   ; 113  ;
+; Unconstrained Output Ports      ; 10    ; 10   ;
+; Unconstrained Output Port Paths ; 113   ; 113  ;
++---------------------------------+-------+------+
+
+
++------------------------------------+
+; TimeQuest Timing Analyzer Messages ;
++------------------------------------+
+Info: *******************************************************************
+Info: Running Quartus II 64-Bit TimeQuest Timing Analyzer
+    Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+    Info: Processing started: Thu Apr 20 22:48:39 2017
+Info: Command: quartus_sta LogicProject -c LogicProject
+Info: qsta_default_script.tcl version: #1
+Warning (20028): Parallel compilation is not licensed and has been disabled
+Critical Warning (332012): Synopsys Design Constraints File file not found: 'LogicProject.sdc'. A Synopsys Design Constraints File is required by the TimeQuest Timing Analyzer to get proper timing constraints. Without it, the Compiler will not properly optimize the design.
+Info (332142): No user constrained base clocks found in the design. Calling "derive_clocks -period 1.0"
+Info (332096): The command derive_clocks did not find any clocks to derive.  No clocks were created or changed.
+Warning (332068): No clocks defined in design.
+Info: Found TIMEQUEST_REPORT_SCRIPT_INCLUDE_DEFAULT_ANALYSIS = ON
+Info (332159): No clocks to report
+Info: Analyzing Slow Model
+Info (332140): No fmax paths to report
+Info (332140): No Setup paths to report
+Info (332140): No Hold paths to report
+Info (332140): No Recovery paths to report
+Info (332140): No Removal paths to report
+Info (332140): No Minimum Pulse Width paths to report
+Info (332001): The selected device family is not supported by the report_metastability command.
+Info: Analyzing Fast Model
+Info (332142): No user constrained base clocks found in the design. Calling "derive_clocks -period 1.0"
+Info (332096): The command derive_clocks did not find any clocks to derive.  No clocks were created or changed.
+Warning (332068): No clocks defined in design.
+Info (332140): No Setup paths to report
+Info (332140): No Hold paths to report
+Info (332140): No Recovery paths to report
+Info (332140): No Removal paths to report
+Info (332140): No Minimum Pulse Width paths to report
+Info (332001): The selected device family is not supported by the report_metastability command.
+Info (332102): Design is not fully constrained for setup requirements
+Info (332102): Design is not fully constrained for hold requirements
+Info: Quartus II 64-Bit TimeQuest Timing Analyzer was successful. 0 errors, 4 warnings
+    Info: Peak virtual memory: 392 megabytes
+    Info: Processing ended: Thu Apr 20 22:48:40 2017
+    Info: Elapsed time: 00:00:01
+    Info: Total CPU time (on all processors): 00:00:00
+
+
