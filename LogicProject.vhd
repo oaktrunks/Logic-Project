@@ -6,7 +6,7 @@ NUM_STAGES : natural := 256
 );
 port(instruction: in STD_LOGIC_VECTOR (15 downto 0); clk : in std_logic; enable : in std_logic; sr_in : in std_logic; sr_out : out std_logic);
 EXE, UPD: in STD_LOGIC;
-enADD, enXOR, enMOVREGTOREG, enMOVDATA, enINC, enDEC, enROL, enROR, enNEG, enOUT: out STD_LOGIC);
+enADD, enXOR, enMOVREGTOREG, enMOVDATA, enINC, enDEC, enROL, enROR, enNEG, enOUT, muxReg2, muxReg1: out STD_LOGIC);
 end;
 architecture decoder of LogicProject is
 begin
