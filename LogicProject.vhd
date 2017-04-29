@@ -20,8 +20,8 @@ enROL <= instruction(15) and instruction(14) and not instruction(13) and instruc
 enROR <= instruction(15) and instruction(14) and not instruction(13) and instruction(12) and not instruction(11) and not instruction(10) and not instruction(9) and not instruction(8) and instruction(7) and instruction(6) and not instruction(5) and not instruction(4) and instruction(3);
 enNEG <= instruction(15) and instruction(14) and instruction(13) and instruction(12) and not instruction(11) and instruction(10) and instruction(9) and not instruction(8) and instruction(7) and instruction(6) and not instruction(5) and instruction(4) and instruction(3);
 enOUT <= instruction(15) and instruction(14) and instruction(13) and not instruction(12) and not instruction(11) and instruction(10) and instruction(9) and not instruction(8) and instruction(7) and instruction(6) and not instruction(5) and not instruction(4) and not instruction(3);
-muxReg2 <= (enADD or enXOR or enMOVREGTOREG) and instruction(5) and instruction(4) and instruction(3)
-muxReg1 <= (enADD or enXOR or enMOVREGTOREG) and instruction(2) and instruction(1) and instruction(0)
+muxReg2 <= not instruction(5) and instruction(4) and instruction(3);
+muxReg1 <= not instruction(2) and instruction(1) and instruction(0);
 end;
 
 --Adder
