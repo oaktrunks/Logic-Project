@@ -347,3 +347,23 @@ begin
 	
 end dec;
 
+--multiplexer
+library IEEE; use IEEE.STD_Logic_1164.all;
+entity multiplexer is
+	port 
+	(	
+		a      	: in std_logic_vector (7 downto 0);
+		b      	: in std_logic_vector (7 downto 0);
+		c	: out std_logic_vector(7 downto 0);
+		enBL	: in std_logic --1 for bl, 0 for al. comes from muxReg1 and muxReg2 from decoder
+	);
+end entity;
+architecture mux of multiplexer is
+begin
+	process(a) begin
+	if enBL = '1' then c <= b; --output BL
+	elsif enBL = '0' then c <= a; --output AL
+	end if;
+	end process;
+end mux;
+
