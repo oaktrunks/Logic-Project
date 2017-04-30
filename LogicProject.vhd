@@ -1,15 +1,3 @@
-library IEEE; use IEEE.STD_Logic_1164.all;
-entity LogicProject is
-port(
-	a: in STD_LOGIC;
-	b: out std_LOGIC
-);
-end;
-architecture Project of LogicProject is
-begin
-	b <= not a and (not a);
-end;
-
 --Decoder
 library IEEE; use IEEE.STD_Logic_1164.all;
 entity decoder is
@@ -373,3 +361,106 @@ begin
 	end process;
 end mux;
 
+library IEEE; use IEEE.STD_Logic_1164.all;
+entity LogicProject is
+port(
+	input: in STD_LOGIC_VECTOR (15 downto 0);
+	upd: in std_LOGIC;
+	exe: in std_LOGIC;
+	output: out STD_LOGIC_VECTOR (15 downto 0)
+);
+end;
+architecture Project of LogicProject is
+
+	component decoder is
+		port(instruction: in STD_LOGIC_VECTOR (15 downto 0); clk : in std_logic; enable : in std_logic; sr_in : in std_logic; sr_out : out std_logic;
+		EXE, UPD: in STD_LOGIC;
+		enADD, enXOR, enMOVREGTOREG, enMOVAL, enMOVBL, enINC, enDEC, enROL, enROR, enNEG, enOUT, muxReg2, muxReg1: out STD_LOGIC;
+		immdata : out std_LOGIC_VECTOR (7 downto 0));
+	end component;
+	component adder
+		port 
+		(
+		a	: in std_logic_vector (7 downto 0);
+		b	: in std_logic_vector (7 downto 0);
+		cin	: in std_logic;
+		sum	: out std_logic_vector (7 downto 0);
+		cout	: out std_logic
+		
+		);
+
+		end component;
+	component reg8bit
+		port 
+		(	
+		UPD		: in std_logic;
+		rin      : in std_logic_vector (7 downto 0);
+		rout		: out std_logic_vector (7 downto 0);
+		routnot	: out std_logic_vector (7 downto 0)
+		);
+
+		end component;
+	component rotator
+		port 
+		(
+		a	: in std_logic_vector (7 downto 0);
+		b	: out std_logic_vector (7 downto 0)
+		);
+
+		end component;
+	component xorcomp
+		port 
+		(	EXE		: in std_LOGIC;
+		UPD		: in std_logic;
+		a      : in std_logic_vector (7 downto 0);
+		b      : in std_logic_vector (7 downto 0);
+		c		 : out std_logic_vector(7 downto 0));
+		end component;
+	component increment
+		port 
+		(
+		a	: in std_logic_vector (7 downto 0);
+		cin	: in std_logic;
+		inc	: out std_logic_vector (7 downto 0);
+		cout	: out std_logic
+		
+		);
+
+		end component;
+	component display_hex
+		port (X : in STD_Logic_VECTOR (7 downto 4	);
+	   Y : in STD_Logic_VECTOR (3 downto 0	);
+		a : out STD_Logic_VECTOR(6 downto 0);
+		b : out STD_Logic_VECTOR (6 downto 0));
+		end component;
+	component negate
+		port 
+		(
+		a	: in std_logic_vector (7 downto 0);
+		cin	: in std_logic;
+		neg	: out std_logic_vector (7 downto 0);
+		cout	: out std_logic
+		
+		);
+
+		end component;
+	component decrement
+		port 
+		(
+		a	: in std_logic_vector (7 downto 0);
+		b	: out std_logic_vector (7 downto 0)
+		);
+
+		end component;
+	component multiplexer
+		port 
+		(	
+		a      	: in std_logic_vector (7 downto 0);
+		b      	: in std_logic_vector (7 downto 0);
+		c	: out std_logic_vector(7 downto 0);
+		enBL	: in std_logic --1 for bl, 0 for al. comes from muxReg1 and muxReg2 from decoder
+		);
+		end component;
+begin
+
+end;
