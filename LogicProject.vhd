@@ -1,7 +1,7 @@
 --Decoder
 library IEEE; use IEEE.STD_Logic_1164.all;
 entity decoder is
-port(instruction: in STD_LOGIC_VECTOR (15 downto 0); clk : in std_logic; enable : in std_logic; sr_in : in std_logic; sr_out : out std_logic;
+port(instruction: in STD_LOGIC_VECTOR (15 downto 0); clk : in std_logic; enable : in std_logic;
 EXE, UPD: in STD_LOGIC;
 enADD, enXOR, enMOVREGTOREG, enMOVAL, enMOVBL, enINC, enDEC, enROL, enROR, enNEG, enOUT, muxReg2, muxReg1: out STD_LOGIC;
 immdata : out std_LOGIC_VECTOR (7 downto 0));
@@ -373,7 +373,7 @@ end;
 architecture Project of LogicProject is
 
 	component decoder is
-		port(instruction: in STD_LOGIC_VECTOR (15 downto 0); clk : in std_logic; enable : in std_logic; sr_in : in std_logic; sr_out : out std_logic;
+		port(instruction: in STD_LOGIC_VECTOR (15 downto 0); clk : in std_logic; enable : in std_logic;
 		EXE, UPD: in STD_LOGIC;
 		enADD, enXOR, enMOVREGTOREG, enMOVAL, enMOVBL, enINC, enDEC, enROL, enROR, enNEG, enOUT, muxReg2, muxReg1: out STD_LOGIC;
 		immdata : out std_LOGIC_VECTOR (7 downto 0));
