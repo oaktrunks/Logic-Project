@@ -126,7 +126,6 @@ begin
 end leftRotator;
 
 architecture rightRotator of rotator is
-signal temp : in std_logic;
 begin
 
 	b(0) <= a(1);
