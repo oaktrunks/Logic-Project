@@ -241,6 +241,59 @@ begin
 end neg;
 
 
+library IEEE;
+use IEEE.STD_Logic_1164.all;
+
+entity Display_hex is
+port (X : in STD_Logic_VECTOR (7 downto 4	);
+	   Y : in STD_Logic_VECTOR (3 downto 0	);
+		a : out STD_Logic_VECTOR(6 downto 0);
+		b : out STD_Logic_VECTOR (6 downto 0));
+end entity;
+
+architecture struct of Display_hex is
+begin
+	process (X) begin
+	
+			if X = "0000" then a <= "1000000";
+			elsif X = "0001" then   a <= "1111001";
+			elsif X = "0010" then   a <= "0100100";
+			elsif X = "0011" then   a <= "0110000";
+			elsif X = "0100" then   a <= "0011001";
+			elsif X = "0101" then   a <= "0010010";
+			elsif X = "0110" then   a <= "0000010";
+			elsif X = "0111" then   a <= "1111000";
+			elsif X = "1000" then   a <= "0000000";
+			elsif X = "1001" then   a <= "0010000";
+			elsif X = "1010" then   a <= "0001000";
+			elsif X = "1011" then   a <= "0000011";
+			elsif X = "1100" then   a <= "1000110";
+			elsif X = "1101" then   a <= "0100001";
+			elsif X = "1110" then   a <= "0000110";
+			elsif X = "1111" then   a <= "0001110";
+		   end if;
+		
+			if Y = "0000" then b <= "1000000";
+			elsif Y = "0001" then   b <= "1111001";
+			elsif Y = "0010" then   b <= "0100100";
+			elsif Y = "0011" then   b <= "0110000";
+			elsif Y = "0100" then   b <= "0011001";
+			elsif Y = "0101" then   b <= "0010010";
+			elsif Y = "0110" then   b <= "0000010";
+			elsif Y = "0111" then   b <= "1111000";
+			elsif Y = "1000" then   b <= "0000000";
+			elsif Y = "1001" then   b <= "0010000";
+			elsif Y = "1010" then   b <= "0001000";
+			elsif Y = "1011" then   b <= "0000011";
+			elsif Y = "1100" then   b <= "1000110";
+			elsif Y = "1101" then   b <= "0100001";
+			elsif Y = "1110" then   b <= "0000110";
+			elsif Y = "1111" then   b <= "0001110";
+		   end if;
+	end process;
+end;
+
+
 
 
 
