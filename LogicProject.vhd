@@ -399,7 +399,7 @@ entity multiplexer2 is
 		immd	: in std_logic_vector(7 downto 0);
 		d	: out std_logic_vector(7 downto 0);
 		enBL	: in std_logic; --1 for bl, 0 for al. comes from muxReg1 and muxReg2 from decoder
-		enMOVREGTOREG: in std_logic;
+		enMOVIMMDATA: in std_logic
 	);
 end entity;
 architecture mux2 of multiplexer2 is
@@ -407,7 +407,7 @@ begin
 	process(al, bl, immd) begin --is this based on the right stuff?
 	if enBL = '1' then d <= bl; --output BL
 	elsif enBL = '0' then  d <= al; --output AL
-	elsif enMOVREGTOREG = '1' then d<= immd; --output immdata
+	elsif enMOVIMMDATA = '1' then d<= immd; --output immdata
 	end if;
 	end process;
 end mux2;
