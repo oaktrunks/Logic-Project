@@ -463,5 +463,7 @@ architecture Project of LogicProject is
 		);
 		end component;
 begin
-
+	signal enADD, enXOR, enMOVREGTOREG, enMOVAL, enMOVBL, enINC, enDEC, enROL, enROR, enNEG, enOUT, muxReg2, muxReg1: out STD_LOGIC;
+	immdata : out std_LOGIC_VECTOR (7 downto 0));
+	decoder: enabler port map(input, EXE, UPD, enADD, enXOR, enMOVREGTOREG, enMOVAL, enMOVBL, enINC, enDEC, enROL, enROR, enNEG, enOUT, muxReg2, muxReg1, immdata);
 end;
