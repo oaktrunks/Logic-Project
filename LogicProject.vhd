@@ -27,6 +27,53 @@ muxReg2 <= not instruction(5) and instruction(4) and instruction(3); --1 for BL,
 muxReg1 <= not instruction(2) and instruction(1) and instruction(0); --1 for BL, 0 for AL
 end;
 
+--giant multiplexer going into reg3
+library IEEE; use IEEE.STD_Logic_1164.all;
+entity giantMux is
+	port 
+	(	exe		: in std_logic; --execute clock
+		enADD		: in std_logic;
+		enXOR		: in std_logic;
+	 	enMOVimmdata	: in std_logic; -- do we need this one?
+	 	enMOVREGTOREG	: in std_logic;
+		enINC		: in std_logic;
+	 	enDEC		: in std_logic;
+		enROL		: in std_logic; --maybe just one signal for enable ROT?
+	 	enROR		: in std_logic;
+		enNEG		: in std_logic;
+	 	enOUT		: in std_logic; --do we need this one?
+	 
+		add      	: in std_logic_vector (7 downto 0);
+		xor      	: in std_logic_vector (7 downto 0);
+		movimmdata      : in std_logic_vector (7 downto 0);
+		movRegtoReg     : in std_logic_vector (7 downto 0);
+		inc      	: in std_logic_vector (7 downto 0);
+		dec      	: in std_logic_vector (7 downto 0);
+		rot      	: in std_logic_vector (7 downto 0); --merged ROL and ROT into one entity
+		--ror      	: in std_logic_vector (7 downto 0);
+		neg      	: in std_logic_vector (7 downto 0);
+		out      	: in std_logic_vector (7 downto 0);
+	 
+		c		: out std_logic_vector(7 downto 0));
+end entity;
+architecture giant of giantMux is
+begin
+	process(exe)
+	begin
+	if enADD = "1" then c <= add;
+	elsif enXOR = "1" then c <= xor;
+	elsif enMOVimmdata = "1" then c <= movimmdata;
+	elsif enMOVREGTOREG = "1" then c <= movRegtoReg;
+	elsif enINC = "1" then c <= inc;
+	elsif enDEC = "1" then c <= dec;
+	elsif enROL = "1" then c <= rot;
+	elsif enROR = "1" then c <= rot;
+	elsif enNEG = "1" then c <= neg;
+	elsif enOUT = "1" then c <= out;
+	end if;
+	end process;
+end;
+
 --Adder
 library IEEE; use IEEE.STD_Logic_1164.all;
 entity adder is
