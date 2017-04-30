@@ -140,7 +140,7 @@ begin
 	a(6) <= a(7);
 	a(7) <= temp;
 	
-end leftRotator;
+end rightRotator;
 
 
 
