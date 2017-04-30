@@ -1,12 +1,13 @@
 library IEEE; use IEEE.STD_Logic_1164.all;
 entity LogicProject is
 port(
-	a: in STD_LOGIC
+	a: in STD_LOGIC;
+	b: out std_LOGIC
 );
 end;
 architecture Project of LogicProject is
 begin
-	a = not a and (not not not a);
+	b <= not a and (not a);
 end;
 
 --Decoder
@@ -219,27 +220,6 @@ begin
 	
 end inc;
 
---Negate
-library IEEE; use IEEE.STD_Logic_1164.all;
-entity negate is
-
-	port 
-	(
-		a	: in std_logic_vector (7 downto 0);
-		cin	: in std_logic;
-		neg	: out std_logic_vector (7 downto 0);
-		cout	: out std_logic
-		
-	);
-
-end entity;
-
-architecture neg of negate is
-signal c1, c2, c3, c4, c5, c6, c7 : std_logic; signal temp	: std_logic_vector (7 downto 0);
-begin
-	temp <= not a;
-end neg;
-
 
 library IEEE;
 use IEEE.STD_Logic_1164.all;
@@ -352,22 +332,18 @@ end entity;
 
 architecture dec of decrement is
 begin
-	process(a)
+	process(a) begin
 	b <= a;
 	if    a(0) = '1' then b(0) <= '0';
-	elsif a(1) = '1' then b(1) = '0' ; b(0) <= '1';
-	elsif a(2) = '1' then b(2) = '0' ; b(1) = '1' ; b(0) <= '1';
-	elsif a(3) = '1' then b(3) = '0' ; b(2) = '1' ; b(1) = '1' ; b(0) <= '1';
-	elsif a(4) = '1' then b(4) <= '0'; b(3) = '1' ; b(2) = '1' ; b(1) = '1' ; b(0) <= '1';
-	elsif a(5) = '1' then b(5) <= '0'; b(4) <= '1'; b(3) = '1' ; b(2) = '1' ; b(1) = '1' ; b(0) <= '1';
-	elsif a(6) = '1' then b(6) <= '0'; b(5) <= '1'; b(4) <= '1'; b(3) = '1' ; b(2) = '1' ; b(1) = '1' ; b(0) <= '1';
-	elsif a(7) = '1' then b(7) <= '0'; b(6) <= '1'; b(5) <= '1'; b(4) <= '1'; b(3) = '1' ; b(2) = '1' ; b(1) = '1' ; b(0) <= '1';
+	elsif a(1) = '1' then b(1) <= '0' ; b(0) <= '1';
+	elsif a(2) = '1' then b(2) <= '0' ; b(1) <= '1' ; b(0) <= '1';
+	elsif a(3) = '1' then b(3) <= '0' ; b(2) <= '1' ; b(1) <= '1' ; b(0) <= '1';
+	elsif a(4) = '1' then b(4) <= '0'; b(3) <= '1' ; b(2) <= '1' ; b(1) <= '1' ; b(0) <= '1';
+	elsif a(5) = '1' then b(5) <= '0'; b(4) <= '1'; b(3) <= '1' ; b(2) <= '1' ; b(1) <= '1' ; b(0) <= '1';
+	elsif a(6) = '1' then b(6) <= '0'; b(5) <= '1'; b(4) <= '1'; b(3) <= '1' ; b(2) <= '1' ; b(1) <= '1' ; b(0) <= '1';
+	elsif a(7) = '1' then b(7) <= '0'; b(6) <= '1'; b(5) <= '1'; b(4) <= '1'; b(3) <= '1' ; b(2) <= '1' ; b(1) <= '1' ; b(0) <= '1';
 	end if;
 	end process;
 	
 end dec;
 
-
-
-
-			
