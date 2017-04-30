@@ -389,9 +389,32 @@ begin
 	
 end dec;
 
---multiplexer
+--multiplexer 2 , has registers as input and IMMDATA as input
 library IEEE; use IEEE.STD_Logic_1164.all;
-entity multiplexer is
+entity multiplexer2 is
+	port 
+	(	
+		al      	: in std_logic_vector (7 downto 0);
+		bl      	: in std_logic_vector (7 downto 0);
+		immd	: in std_logic_vector(7 downto 0);
+		d	: out std_logic_vector(7 downto 0);
+		enBL	: in std_logic; --1 for bl, 0 for al. comes from muxReg1 and muxReg2 from decoder
+		enMOVREGTOREG: in std_logic;
+	);
+end entity;
+architecture mux2 of multiplexer2 is
+begin
+	process(al, bl, immd) begin --is this based on the right stuff?
+	if enBL = '1' then d <= bl; --output BL
+	elsif enBL = '0' then  d <= al; --output AL
+	elsif enMOVREGTOREG = '1' then d<= immd; --output immdata
+	end if;
+	end process;
+end mux2;
+	
+--multiplexer 1
+library IEEE; use IEEE.STD_Logic_1164.all;
+entity multiplexer1 is
 	port 
 	(	
 		a      	: in std_logic_vector (7 downto 0);
@@ -400,14 +423,14 @@ entity multiplexer is
 		enBL	: in std_logic --1 for bl, 0 for al. comes from muxReg1 and muxReg2 from decoder
 	);
 end entity;
-architecture mux of multiplexer is
+architecture mux1 of multiplexer1 is
 begin
 	process(a) begin
 	if enBL = '1' then c <= b; --output BL
 	else c <= a; --output AL
 	end if;
 	end process;
-end mux;
+end mux1;
 
 library IEEE; use IEEE.STD_Logic_1164.all;
 entity LogicProject is
