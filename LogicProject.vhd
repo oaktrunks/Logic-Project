@@ -338,6 +338,34 @@ begin
 	cout <= (temp(7) and b(7)) or (temp(7) and c7) or (b(7) and c7);
 end neg;
 
+--decrement
+library IEEE; use IEEE.STD_Logic_1164.all;
+entity decrement is
+
+	port 
+	(
+		a	: in std_logic_vector (7 downto 0);
+		b	: out std_logic_vector (7 downto 0)
+	);
+
+end entity;
+
+architecture dec of decrement is
+begin
+	process(a)
+	b <= a;
+	if    a(0) = '1' then b(0) <= '0';
+	elsif a(1) = '1' then b(1) = '0' ; b(0) <= '1';
+	elsif a(2) = '1' then b(2) = '0' ; b(1) = '1' ; b(0) <= '1';
+	elsif a(3) = '1' then b(3) = '0' ; b(2) = '1' ; b(1) = '1' ; b(0) <= '1';
+	elsif a(4) = '1' then b(4) <= '0'; b(3) = '1' ; b(2) = '1' ; b(1) = '1' ; b(0) <= '1';
+	elsif a(5) = '1' then b(5) <= '0'; b(4) <= '1'; b(3) = '1' ; b(2) = '1' ; b(1) = '1' ; b(0) <= '1';
+	elsif a(6) = '1' then b(6) <= '0'; b(5) <= '1'; b(4) <= '1'; b(3) = '1' ; b(2) = '1' ; b(1) = '1' ; b(0) <= '1';
+	elsif a(7) = '1' then b(7) <= '0'; b(6) <= '1'; b(5) <= '1'; b(4) <= '1'; b(3) = '1' ; b(2) = '1' ; b(1) = '1' ; b(0) <= '1';
+	end if;
+	end process;
+	
+end dec;
 
 
 
