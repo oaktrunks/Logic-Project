@@ -115,7 +115,7 @@ entity rotator is
 		a	: in std_logic_vector (7 downto 0);
 		b	: out std_logic_vector (7 downto 0);
 		enROR 	: in std_logic;
-		enROL 	: in std_logic;
+		enROL 	: in std_logic
 	);
 
 end entity;
