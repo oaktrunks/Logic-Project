@@ -142,7 +142,7 @@ begin
 		b(5) <= a(6);
 		b(6) <= a(7);
 		b(7) <= a(0);
-	endif;
+	end if;
 	end process;
 	
 end rot;
