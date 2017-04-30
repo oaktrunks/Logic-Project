@@ -43,16 +43,16 @@ entity giantMux is
 		enNEG		: in std_logic;
 	 	enOUT		: in std_logic; --do we need this one?
 	 
-		add      	: in std_logic_vector (7 downto 0);
-		xor      	: in std_logic_vector (7 downto 0);
-		movimmdata      : in std_logic_vector (7 downto 0);
-		movRegtoReg     : in std_logic_vector (7 downto 0);
-		inc      	: in std_logic_vector (7 downto 0);
-		dec      	: in std_logic_vector (7 downto 0);
-		rot      	: in std_logic_vector (7 downto 0); --merged ROL and ROT into one entity
+		vecadd      	: in std_logic_vector (7 downto 0);
+		vecxor      	: in std_logic_vector (7 downto 0);
+		vecmovimmdata      : in std_logic_vector (7 downto 0);
+		vecmovRegtoReg     : in std_logic_vector (7 downto 0);
+		vecinc      	: in std_logic_vector (7 downto 0);
+		vecdec      	: in std_logic_vector (7 downto 0);
+		vecrot      	: in std_logic_vector (7 downto 0); --merged ROL and ROT into one entity
 		--ror      	: in std_logic_vector (7 downto 0);
-		neg      	: in std_logic_vector (7 downto 0);
-		out      	: in std_logic_vector (7 downto 0);
+		vecneg      	: in std_logic_vector (7 downto 0);
+		vecout      	: in std_logic_vector (7 downto 0);
 	 
 		c		: out std_logic_vector(7 downto 0));
 end entity;
@@ -60,16 +60,16 @@ architecture giant of giantMux is
 begin
 	process(exe)
 	begin
-	if enADD = "1" then c <= add;
-	elsif enXOR = "1" then c <= xor;
-	elsif enMOVimmdata = "1" then c <= movimmdata;
-	elsif enMOVREGTOREG = "1" then c <= movRegtoReg;
-	elsif enINC = "1" then c <= inc;
-	elsif enDEC = "1" then c <= dec;
-	elsif enROL = "1" then c <= rot;
-	elsif enROR = "1" then c <= rot;
-	elsif enNEG = "1" then c <= neg;
-	elsif enOUT = "1" then c <= out;
+	if enADD = '1' then c <= vecadd;
+	elsif enXOR = '1' then c <= vecxor;
+	elsif enMOVimmdata = '1' then c <= vecmovimmdata;
+	elsif enMOVREGTOREG = '1' then c <= vecmovRegtoReg;
+	elsif enINC = '1' then c <= vecinc;
+	elsif enDEC = '1' then c <= vecdec;
+	elsif enROL = '1' then c <= vecrot;
+	elsif enROR = '1' then c <= vecrot;
+	elsif enNEG = '1'then c <= vecneg;
+	elsif enOUT = '1' then c <= vecout;
 	end if;
 	end process;
 end;
