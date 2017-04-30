@@ -293,7 +293,50 @@ begin
 	end process;
 end;
 
+--Negate
+library IEEE; use IEEE.STD_Logic_1164.all;
+entity negate is
 
+	port 
+	(
+		a	: in std_logic_vector (7 downto 0);
+		cin	: in std_logic;
+		neg	: out std_logic_vector (7 downto 0);
+		cout	: out std_logic
+		
+	);
+
+end entity;
+
+architecture neg of negate is
+signal c1, c2, c3, c4, c5, c6, c7 : std_logic; signal temp, b	: std_logic_vector (7 downto 0);
+begin
+	temp <= not a;
+	b <= "0000001";
+	neg(0) <= temp(0) xor b(0) xor cin;
+	c1 <= (temp(0) and b(0)) or (temp(0) and cin) or (b(0) and cin);
+	
+	neg(1) <= temp(1) xor b(1) xor c1;
+	c2 <= (temp(1) and b(1)) or (temp(1) and c1) or (b(1) and c1);
+	
+	neg(2) <= temp(2) xor b(2) xor c2;
+	c3 <= (temp(2) and b(2)) or (temp(2) and c2) or (b(2) and c2);
+	
+	neg(3) <= temp(3) xor b(3) xor c3;
+	c4 <= (temp(3) and b(3)) or (temp(3) and c3) or (b(3) and c3);
+	
+	neg(4) <= temp(4) xor b(4) xor c4;
+	c5 <= (temp(4) and b(4)) or (temp(4) and c4) or (b(4) and c4);
+	
+	neg(5) <= temp(5) xor b(5) xor c5;
+	c6 <= (temp(5) and b(5)) or (temp(5) and c5) or (b(5) and c5);
+	
+	neg(6) <= temp(6) xor b(6) xor c6;
+	c7 <= (temp(6) and b(6)) or (temp(6) and c6) or (b(6) and c6);
+	
+	neg(7) <= temp(7) xor b(7) xor c7;
+	cout <= (temp(7) and b(7)) or (temp(7) and c7) or (b(7) and c7);
+end neg;
 
 
 
