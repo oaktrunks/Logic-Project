@@ -113,38 +113,38 @@ entity rotator is
 	port 
 	(
 		a	: in std_logic_vector (7 downto 0);
-		b	: out std_logic_vector (7 downto 0)
+		b	: out std_logic_vector (7 downto 0);
+		enROR 	: in std_logic;
+		enROL 	: in std_logic;
 	);
 
 end entity;
 
-architecture leftRotator of rotator is
+architecture rot of rotator is
 begin
+	process(a)
+	if enROR = '1' then --rotate right
+		b(7) <= a(6);
+		b(6) <= a(5);
+		b(5) <= a(4);
+		b(4) <= a(3);
+		b(3) <= a(2);
+		b(2) <= a(1);
+		b(1) <= a(0);
+		b(0) <= a(7);
+	elsif enROL = '1' then --rotate left
+		b(0) <= a(1);
+		b(1) <= a(2);
+		b(2) <= a(3);
+		b(3) <= a(4);
+		b(4) <= a(5);
+		b(5) <= a(6);
+		b(6) <= a(7);
+		b(7) <= a(0);
+	endif;
+	end process;
 	
-	b(7) <= a(6);
-	b(6) <= a(5);
-	b(5) <= a(4);
-	b(4) <= a(3);
-	b(3) <= a(2);
-	b(2) <= a(1);
-	b(1) <= a(0);
-	b(0) <= a(7);
-	
-end leftRotator;
-
-architecture rightRotator of rotator is
-begin
-
-	b(0) <= a(1);
-	b(1) <= a(2);
-	b(2) <= a(3);
-	b(3) <= a(4);
-	b(4) <= a(5);
-	b(5) <= a(6);
-	b(6) <= a(7);
-	b(7) <= a(0);
-	
-end rightRotator;
+end rot;
 
 
 --XOR Component
