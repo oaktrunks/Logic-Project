@@ -123,6 +123,7 @@ end entity;
 architecture rot of rotator is
 begin
 	process(a)
+	begin
 	if enROR = '1' then --rotate right
 		b(7) <= a(6);
 		b(6) <= a(5);
