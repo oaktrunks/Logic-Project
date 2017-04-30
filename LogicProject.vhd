@@ -220,7 +220,7 @@ begin
 	
 end inc;
 
-
+--Output
 library IEEE;
 use IEEE.STD_Logic_1164.all;
 
