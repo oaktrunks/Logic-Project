@@ -1,10 +1,19 @@
 library IEEE; use IEEE.STD_Logic_1164.all;
 entity LogicProject is
+port();
+end;
+architecture Project of LogicProject is
+begin
+
+end;
+
+--Decoder
+entity decoder is
 port(instruction: in STD_LOGIC_VECTOR (15 downto 0); clk : in std_logic; enable : in std_logic; sr_in : in std_logic; sr_out : out std_logic;
 EXE, UPD: in STD_LOGIC;
 enADD, enXOR, enMOVREGTOREG, enMOVDATA, enINC, enDEC, enROL, enROR, enNEG, enOUT, muxReg2, muxReg1: out STD_LOGIC);
 end;
-architecture decoder of LogicProject is
+architecture enabler of decoder is
 begin
 enADD <= not instruction(15) and not instruction(14) and not instruction(13) and not instruction(12) and not instruction(11) and not instruction(10) and not instruction(9) and not instruction(8) and instruction(7) and instruction(6);
 enXOR <= not instruction(15) and not instruction(14) and instruction(13) and instruction(12) and not instruction(11) and not instruction(10) and not instruction(9) and not instruction(8) and instruction(7) and instruction(6);
