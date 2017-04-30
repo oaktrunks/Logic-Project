@@ -362,7 +362,7 @@ architecture mux of multiplexer is
 begin
 	process(a) begin
 	if enBL = '1' then c <= b; --output BL
-	elsif enBL = '0' then c <= a; --output AL
+	else c <= a; --output AL
 	end if;
 	end process;
 end mux;
