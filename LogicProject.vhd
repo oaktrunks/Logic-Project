@@ -1,13 +1,16 @@
 library IEEE; use IEEE.STD_Logic_1164.all;
 entity LogicProject is
-port();
+port(
+	a: in STD_LOGIC
+);
 end;
 architecture Project of LogicProject is
 begin
-
+	a = not a and (not not not a);
 end;
 
 --Decoder
+library IEEE; use IEEE.STD_Logic_1164.all;
 entity decoder is
 port(instruction: in STD_LOGIC_VECTOR (15 downto 0); clk : in std_logic; enable : in std_logic; sr_in : in std_logic; sr_out : out std_logic;
 EXE, UPD: in STD_LOGIC;
