@@ -1,5 +1,5 @@
 Flow report for LogicProject
-Thu Apr 20 22:48:40 2017
+Sat Apr 29 19:58:49 2017
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -40,7 +40,7 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Flow Summary                                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Flow Status                        ; Successful - Thu Apr 20 22:48:38 2017           ;
+; Flow Status                        ; Successful - Sat Apr 29 19:58:47 2017           ;
 ; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
 ; Revision Name                      ; LogicProject                                    ;
 ; Top-level Entity Name              ; LogicProject                                    ;
@@ -49,7 +49,7 @@ applicable agreement for further details.
 ;     Total combinational functions  ; 23 / 4,608 ( < 1 % )                            ;
 ;     Dedicated logic registers      ; 0 / 4,608 ( 0 % )                               ;
 ; Total registers                    ; 0                                               ;
-; Total pins                         ; 28 / 89 ( 31 % )                                ;
+; Total pins                         ; 32 / 89 ( 36 % )                                ;
 ; Total virtual pins                 ; 0                                               ;
 ; Total memory bits                  ; 0 / 119,808 ( 0 % )                             ;
 ; Embedded Multiplier 9-bit elements ; 0 / 26 ( 0 % )                                  ;
@@ -64,7 +64,7 @@ applicable agreement for further details.
 +-------------------+---------------------+
 ; Option            ; Setting             ;
 +-------------------+---------------------+
-; Start date & time ; 04/20/2017 22:48:30 ;
+; Start date & time ; 04/29/2017 19:58:37 ;
 ; Main task         ; Compilation         ;
 ; Revision Name     ; LogicProject        ;
 +-------------------+---------------------+
@@ -75,7 +75,7 @@ applicable agreement for further details.
 +-------------------------------------+-------------------------------+---------------+-------------+------------+
 ; Assignment Name                     ; Value                         ; Default Value ; Entity Name ; Section Id ;
 +-------------------------------------+-------------------------------+---------------+-------------+------------+
-; COMPILER_SIGNATURE_ID               ; 1098837311106.149274651013160 ; --            ; --          ; --         ;
+; COMPILER_SIGNATURE_ID               ; 9218716654188.149351391700680 ; --            ; --          ; --         ;
 ; PARTITION_COLOR                     ; 16764057                      ; --            ; --          ; Top        ;
 ; PARTITION_FITTER_PRESERVATION_LEVEL ; PLACEMENT_AND_ROUTING         ; --            ; --          ; Top        ;
 ; PARTITION_NETLIST_TYPE              ; SOURCE                        ; --            ; --          ; Top        ;
@@ -88,11 +88,11 @@ applicable agreement for further details.
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 ; Module Name               ; Elapsed Time ; Average Processors Used ; Peak Virtual Memory ; Total CPU Time (on all processors) ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
-; Analysis & Synthesis      ; 00:00:01     ; 1.0                     ; 484 MB              ; 00:00:01                           ;
-; Fitter                    ; 00:00:03     ; 1.0                     ; 582 MB              ; 00:00:01                           ;
-; Assembler                 ; 00:00:00     ; 1.0                     ; 420 MB              ; 00:00:00                           ;
-; TimeQuest Timing Analyzer ; 00:00:01     ; 1.0                     ; 392 MB              ; 00:00:00                           ;
-; Total                     ; 00:00:05     ; --                      ; --                  ; 00:00:02                           ;
+; Analysis & Synthesis      ; 00:00:02     ; 1.0                     ; 516 MB              ; 00:00:01                           ;
+; Fitter                    ; 00:00:05     ; 1.0                     ; 680 MB              ; 00:00:03                           ;
+; Assembler                 ; 00:00:01     ; 1.0                     ; 438 MB              ; 00:00:01                           ;
+; TimeQuest Timing Analyzer ; 00:00:01     ; 1.0                     ; 421 MB              ; 00:00:01                           ;
+; Total                     ; 00:00:09     ; --                      ; --                  ; 00:00:06                           ;
 +---------------------------+--------------+-------------------------+---------------------+------------------------------------+
 
 
@@ -101,10 +101,10 @@ applicable agreement for further details.
 +---------------------------+------------------+-----------+------------+----------------+
 ; Module Name               ; Machine Hostname ; OS Name   ; OS Version ; Processor type ;
 +---------------------------+------------------+-----------+------------+----------------+
-; Analysis & Synthesis      ; DannyPhantomPC   ; Windows 7 ; 6.2        ; x86_64         ;
-; Fitter                    ; DannyPhantomPC   ; Windows 7 ; 6.2        ; x86_64         ;
-; Assembler                 ; DannyPhantomPC   ; Windows 7 ; 6.2        ; x86_64         ;
-; TimeQuest Timing Analyzer ; DannyPhantomPC   ; Windows 7 ; 6.2        ; x86_64         ;
+; Analysis & Synthesis      ; Tyler            ; Windows 7 ; 6.2        ; x86_64         ;
+; Fitter                    ; Tyler            ; Windows 7 ; 6.2        ; x86_64         ;
+; Assembler                 ; Tyler            ; Windows 7 ; 6.2        ; x86_64         ;
+; TimeQuest Timing Analyzer ; Tyler            ; Windows 7 ; 6.2        ; x86_64         ;
 +---------------------------+------------------+-----------+------------+----------------+
 
 

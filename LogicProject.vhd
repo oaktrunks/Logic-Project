@@ -1,10 +1,6 @@
 library IEEE; use IEEE.STD_Logic_1164.all;
 entity LogicProject is
-generic
-(
-NUM_STAGES : natural := 256
-);
-port(instruction: in STD_LOGIC_VECTOR (15 downto 0); clk : in std_logic; enable : in std_logic; sr_in : in std_logic; sr_out : out std_logic);
+port(instruction: in STD_LOGIC_VECTOR (15 downto 0); clk : in std_logic; enable : in std_logic; sr_in : in std_logic; sr_out : out std_logic;
 EXE, UPD: in STD_LOGIC;
 enADD, enXOR, enMOVREGTOREG, enMOVDATA, enINC, enDEC, enROL, enROR, enNEG, enOUT: out STD_LOGIC);
 end;
@@ -73,8 +69,8 @@ library IEEE; use IEEE.STD_Logic_1164.all;
 entity reg8bit is
 
 	port 
-	(
-		enADD		: in std_logic;
+	(	
+		UPD		: in std_logic;
 		rin      : in std_logic_vector (7 downto 0);
 		rout		: out std_logic_vector (7 downto 0);
 		routnot	: out std_logic_vector (7 downto 0)
@@ -87,10 +83,10 @@ architecture r8 of reg8bit is
 
 begin
 
-	process (enADD)
+	process (UPD)
 	begin
 		
-		if (enADD = '1') then
+		if (UPD = '1') then
 
 				rout <= rin;
 				routnot <= not rin;
