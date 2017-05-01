@@ -476,7 +476,9 @@ architecture Project of LogicProject is
 		port 
 		(
 		a	: in std_logic_vector (7 downto 0);
-		b	: out std_logic_vector (7 downto 0)
+		b	: out std_logic_vector (7 downto 0);
+		enROR 	: in std_logic;
+		enROL 	: in std_logic
 		);
 
 		end component;
@@ -592,11 +594,27 @@ architecture Project of LogicProject is
 		signal notgiantmuxout: std_logic_vector(7 downto 0); --do we need this(?)
 		
 begin
-	--duplicate names(problem?)
+	--all of our port maps
 	instructionDecoder: decoder port map(input, exe, upd, enADD, enXOR, enMOVREGTOREG, enMOVIMMDATA, enMOVAL, enMOVBL, enINC, enDEC, enROL, enROR, enNEG, enOUT, muxReg2, muxReg1, immdata);
-	regAdder: adder port map(mux1out, mux2out, carryin, vecadd, carryout);
 	AL: reg8bit port map(enMOVAL, reg3out, alout, notalout); --enMOVAL or upd (?)
 	BL: reg8bit port map(enMOVBL, reg3out, blout, notblout); --enMOVBL or upd (?)
 	reg3: reg8bit port map(upd, giantmuxout, reg3out, notgiantmuxout); --whats the upd for this one(?)
-	mux1: 
+	--mux1 is for reg1 and reg, mux2 is for reg2 in input parameters
+	mux1: multiplexer1 port map(alout, blout, mux1out, muxReg1);
+	mux2: multiplexer2 port map(alout, blout, immdata, mux2out, muxReg2, enMOVIMMDATA); --idk if immdata into mux2 is a good idea (?), it might be
+	bigmux: giantMux port map(exe, enAdd, enXOR, en MOVIMMDATA, enMOVREGTOREG, enINC, enDEC, enROL, enROR, enNEG, enOUT, vecadd, vecxor, vecmovimmdata, vecmovRegtoReg, vecinc, vecdec, vecrot, vecneg, vecout, giantmuxout);
+	regAdder: adder port map(mux1out, mux2out, carryin, vecadd, carryout);
+	regRotator: rotator port map(mux1out, vecrot);
+	regXor: xorcomp port map(exe, upd, mux1out, mux2out, vecxor);
+	regInc: increment port map(mux1out, carryin, vecinc, carryout);
+	regDec: decrement port map(mux1out, vecdec);
+	regRot: decrement port map(mux1out, vecrot, enROR, enROL);
+	regNeg: negate port map(mux1out, carryin,  vecneg, carryout);
+	
+	--(?) How to connect display_hex
+	regOut: display_hex port map()
+	
+	--(?) issues 	: probably make it so OUT doesnt go into reg3? or is it okay
+	--					: some of our components have exe and upd, some dont
+	--					: should we remove cout and cin from adder and incrementer and negator?
 end;
