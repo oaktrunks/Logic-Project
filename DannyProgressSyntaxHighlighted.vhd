@@ -61,7 +61,7 @@ entity giantMux is
 end entity;
 architecture giant of giantMux is
 begin
-	process(exe)
+	process(enADD, enXOR, enMOVIMMDATA, enMOVREGTOREG, enINC, enDEC, enROL, enROR, enNEG)
 	begin
 	if 	enADD = '1' then c <= vecadd;
 	elsif enXOR = '1' then c <= vecxor;
