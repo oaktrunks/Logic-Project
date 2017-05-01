@@ -607,11 +607,10 @@ begin
 	mux2: multiplexer2 port map(alout, blout, immdata, mux2out, muxReg2, enMOVIMMDATA); --idk if immdata into mux2 is a good idea (?), it might be
 	bigmux: giantMux port map(exe, enAdd, enXOR, enMOVIMMDATA, enMOVREGTOREG, enINC, enDEC, enROL, enROR, enNEG, enOUT, vecadd, vecxor, vecmovimmdata, vecmovRegtoReg, vecinc, vecdec, vecrot, vecneg, vecout, giantmuxout);
 	regAdder: adder port map(mux1out, mux2out, carryin, vecadd, carryout);
-	regRotator: rotator port map(mux1out, vecrot, enROR, enROL);
 	regXor: xorcomp port map(exe, upd, mux1out, mux2out, vecxor);
 	regInc: increment port map(mux1out, carryin, vecinc, carryout);
 	regDec: decrement port map(mux1out, vecdec);
-	regRot: decrement port map(mux1out, vecrot, enROR, enROL);
+	regRot: rotator port map(mux1out, vecrot, enROR, enROL);
 	regNeg: negate port map(mux1out, carryin,  vecneg, carryout);
 	
 	--(?) How to connect display_hex
