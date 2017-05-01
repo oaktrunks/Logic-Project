@@ -612,7 +612,7 @@ begin
 	regNeg: negate port map(mux1out, carryin,  vecneg, carryout);
 	
 	--(?) How to connect display_hex
-	regOut: display_hex port map()
+	regOut: display_hex port map();
 	
 	--(?) issues 	: probably make it so OUT doesnt go into reg3? or is it okay
 	--					: some of our components have exe and upd, some dont
