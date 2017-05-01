@@ -1,7 +1,7 @@
 --Decoder
 library IEEE; use IEEE.STD_Logic_1164.all;
 entity decoder is
-port(instruction: in STD_LOGIC_VECTOR (15 downto 0); clk : in std_logic; enable : in std_logic;
+port(instruction: in STD_LOGIC_VECTOR (15 downto 0);
 EXE, UPD: in STD_LOGIC;
 enADD, enXOR, enMOVREGTOREG, enMOVIMMDATA, enMOVAL, enMOVBL, enINC, enDEC, enROL, enROR, enNEG, enOUT, muxReg2, muxReg1: out STD_LOGIC;
 immdata : out std_LOGIC_VECTOR (7 downto 0));
@@ -268,14 +268,17 @@ library IEEE;
 use IEEE.STD_Logic_1164.all;
 
 entity Display_hex is
-port (X : in STD_Logic_VECTOR (7 downto 4	);
-	   Y : in STD_Logic_VECTOR (3 downto 0	);
+port (Z : in STD_LOGIC_VECTOR (7 downto 0);
+		--X : in STD_Logic_VECTOR (3 downto 0	);
+	   --Y : in STD_Logic_VECTOR (3 downto 0	);
 		a : out STD_Logic_VECTOR(6 downto 0);
 		b : out STD_Logic_VECTOR (6 downto 0));
 end entity;
 
 architecture struct of Display_hex is
+signal X, Y : std_LOGIC_VECTOR (3 downto 0);
 begin
+	X <= Z(7 downto 4); Y <= Z(3 downto 0);
 	process (X) begin
 	
 			if X = "0000" then a <= "1000000";
@@ -445,7 +448,7 @@ end;
 architecture Project of LogicProject is
 
 	component decoder is
-		port(instruction: in STD_LOGIC_VECTOR (15 downto 0); clk : in std_logic; enable : in std_logic;
+		port(instruction: in STD_LOGIC_VECTOR (15 downto 0);
 		EXE, UPD: in STD_LOGIC;
 		enADD, enXOR, enMOVREGTOREG, enMOVAL, enMOVBL, enINC, enDEC, enROL, enROR, enNEG, enOUT, muxReg2, muxReg1: out STD_LOGIC;
 		immdata : out std_LOGIC_VECTOR (7 downto 0));
@@ -581,12 +584,12 @@ architecture Project of LogicProject is
 		--all of our signals
 		--enable signals & immdata
 		signal enADD, enXOR, enMOVREGTOREG, enMOVIMMDATA, enMOVAL, enMOVBL, enINC, enDEC, enROL, enROR, enNEG, enOUT, muxReg2, muxReg1: STD_LOGIC;
-		signal immdata : std_LOGIC_VECTOR (7 downto 0));
+		signal immdata : std_LOGIC_VECTOR (7 downto 0);
 		--mux & regs
-		signal al, bl, regin, mux1out, mux2out, alout, blout. reg3out : std_logic_vector (7 downto 0);
+		signal al, bl, regin, mux1out, mux2out, alout, blout, reg3out : std_logic_vector (7 downto 0);
 		signal notalout, notblout: std_logic_vector (7 downto 0); -- do we need these(?)
 		--giant mux input and component outputs
-		signal vecadd, vecxor, vecmovimmdata, vecmovRegtoReg, vecinc, vecdec, vectrot, vecneg, vecout, c : std_LOGIC_VECTOR (7 downto 0));
+		signal vecadd, vecxor, vecmovimmdata, vecmovRegtoReg, vecinc, vecdec, vectrot, vecneg, vecout, c : std_LOGIC_VECTOR (7 downto 0);
 		--adder
 		signal carryin, carryout : std_logic;
 		--giant mux
@@ -598,7 +601,7 @@ begin
 	instructionDecoder: decoder port map(input, exe, upd, enADD, enXOR, enMOVREGTOREG, enMOVIMMDATA, enMOVAL, enMOVBL, enINC, enDEC, enROL, enROR, enNEG, enOUT, muxReg2, muxReg1, immdata);
 	AL: reg8bit port map(enMOVAL, reg3out, alout, notalout); --enMOVAL or upd (?)
 	BL: reg8bit port map(enMOVBL, reg3out, blout, notblout); --enMOVBL or upd (?)
-	reg3: reg8bit port map(upd, giantmuxout, reg3out, notgiantmuxout); --whats the upd for this one(?)
+	reg3: reg8bit port map(upd, giantmuxout, reg3out, notgiantmuxout); --whats the upd for this one(?) ***this should update on the execute clock*** -Tyler
 	--mux1 is for reg1 and reg, mux2 is for reg2 in input parameters
 	mux1: multiplexer1 port map(alout, blout, mux1out, muxReg1);
 	mux2: multiplexer2 port map(alout, blout, immdata, mux2out, muxReg2, enMOVIMMDATA); --idk if immdata into mux2 is a good idea (?), it might be
@@ -612,7 +615,7 @@ begin
 	regNeg: negate port map(mux1out, carryin,  vecneg, carryout);
 	
 	--(?) How to connect display_hex
-	regOut: display_hex port map();
+	--regOut: display_hex port map();
 	
 	--(?) issues 	: probably make it so OUT doesnt go into reg3? or is it okay
 	--					: some of our components have exe and upd, some dont
