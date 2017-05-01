@@ -601,7 +601,7 @@ begin
 	instructionDecoder: decoder port map(input, exe, upd, enADD, enXOR, enMOVREGTOREG, enMOVIMMDATA, enMOVAL, enMOVBL, enINC, enDEC, enROL, enROR, enNEG, enOUT, muxReg2, muxReg1, immdata);
 	AL: reg8bit port map(enMOVAL, reg3out, alout, notalout); --enMOVAL or upd (?)
 	BL: reg8bit port map(enMOVBL, reg3out, blout, notblout); --enMOVBL or upd (?)
-	reg3: reg8bit port map(upd, giantmuxout, reg3out, notgiantmuxout); --whats the upd for this one(?) ***this should update on the execute clock*** -Tyler
+	reg3: reg8bit port map(exe, giantmuxout, reg3out, notgiantmuxout); --whats the upd for this one(?) ***this should update on the execute clock*** -Tyler
 	--mux1 is for reg1 and reg, mux2 is for reg2 in input parameters
 	mux1: multiplexer1 port map(alout, blout, mux1out, muxReg1);
 	mux2: multiplexer2 port map(alout, blout, immdata, mux2out, muxReg2, enMOVIMMDATA); --idk if immdata into mux2 is a good idea (?), it might be
