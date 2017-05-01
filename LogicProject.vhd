@@ -485,8 +485,8 @@ library IEEE; use IEEE.STD_Logic_1164.all;
 entity LogicProject is
 port(
 	inpt: in STD_LOGIC_VECTOR (15 downto 0);
-	upd: in std_LOGIC;
-	exe: in std_LOGIC;
+	updd: in std_LOGIC;
+	exee: in std_LOGIC;
 	--output: out STD_LOGIC_VECTOR (15 downto 0) commented this out in favor of outputA and outputB to control lights
 	outputA: out STD_logic_vector(6 downto 0); --left light
 	outputB: out STD_logic_vector(6 downto 0) --left light
@@ -665,8 +665,14 @@ architecture Project of LogicProject is
 		--4th reg, reg is for holding output
 		signal muxReg3: std_logic;
 		signal mux3out: std_logic_vector(7 downto 0);
+		
+		--input clock signals to be inverted
+		signal exe: std_LOGIC;
+		signal upd: std_LOGIC;
 begin
 	--all of our port maps
+	exe <= not exee;
+	upd <= not updd;
 	instructionDecoder: decoder port map(inpt, upd, enADD, enXOR, enMOVREGTOREG, enMOVIMMDATA, enMOVAL, enMOVBL, enINC, enDEC, enROL, enROR, enNEG, enOUT, muxReg2, muxReg1, muxReg3, immdata);
 	AL: reg8bit port map(enMOVAL, reg3out, alout); --enMOVAL or upd (?)
 	BL: reg8bit port map(enMOVBL, reg3out, blout); --enMOVBL or upd (?)
