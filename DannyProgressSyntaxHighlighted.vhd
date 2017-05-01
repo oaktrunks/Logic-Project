@@ -450,7 +450,7 @@ architecture Project of LogicProject is
 	component decoder is
 		port(instruction: in STD_LOGIC_VECTOR (15 downto 0);
 		--EXE, UPD: in STD_LOGIC;
-		enADD, enXOR, enMOVREGTOREG, enMOVAL, enMOVBL, enINC, enDEC, enROL, enROR, enNEG, enOUT, muxReg2, muxReg1: out STD_LOGIC;
+		enADD, enXOR, enMOVREGTOREG, enMOVIMMDATA, enMOVAL, enMOVBL, enINC, enDEC, enROL, enROR, enNEG, enOUT, muxReg2, muxReg1: out STD_LOGIC;
 		immdata : out std_LOGIC_VECTOR (7 downto 0));
 	end component;
 	component adder
