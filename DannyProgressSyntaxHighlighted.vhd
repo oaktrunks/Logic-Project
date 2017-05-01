@@ -2,7 +2,7 @@
 library IEEE; use IEEE.STD_Logic_1164.all;
 entity decoder is
 port(instruction: in STD_LOGIC_VECTOR (15 downto 0);
-EXE, UPD: in STD_LOGIC;
+--EXE, UPD: in STD_LOGIC;
 enADD, enXOR, enMOVREGTOREG, enMOVIMMDATA, enMOVAL, enMOVBL, enINC, enDEC, enROL, enROR, enNEG, enOUT, muxReg2, muxReg1: out STD_LOGIC;
 immdata : out std_LOGIC_VECTOR (7 downto 0));
 end;
@@ -449,7 +449,7 @@ architecture Project of LogicProject is
 
 	component decoder is
 		port(instruction: in STD_LOGIC_VECTOR (15 downto 0);
-		EXE, UPD: in STD_LOGIC;
+		--EXE, UPD: in STD_LOGIC;
 		enADD, enXOR, enMOVREGTOREG, enMOVAL, enMOVBL, enINC, enDEC, enROL, enROR, enNEG, enOUT, muxReg2, muxReg1: out STD_LOGIC;
 		immdata : out std_LOGIC_VECTOR (7 downto 0));
 	end component;
@@ -598,7 +598,7 @@ architecture Project of LogicProject is
 		
 begin
 	--all of our port maps
-	instructionDecoder: decoder port map(input, exe, upd, enADD, enXOR, enMOVREGTOREG, enMOVIMMDATA, enMOVAL, enMOVBL, enINC, enDEC, enROL, enROR, enNEG, enOUT, muxReg2, muxReg1, immdata);
+	instructionDecoder: decoder port map(input, enADD, enXOR, enMOVREGTOREG, enMOVIMMDATA, enMOVAL, enMOVBL, enINC, enDEC, enROL, enROR, enNEG, enOUT, muxReg2, muxReg1, immdata);
 	AL: reg8bit port map(enMOVAL, reg3out, alout, notalout); --enMOVAL or upd (?)
 	BL: reg8bit port map(enMOVBL, reg3out, blout, notblout); --enMOVBL or upd (?)
 	reg3: reg8bit port map(exe, giantmuxout, reg3out, notgiantmuxout); --whats the upd for this one(?) ***this should update on the execute clock*** -Tyler
