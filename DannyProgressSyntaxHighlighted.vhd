@@ -4,14 +4,14 @@ entity decoder is
 port(instruction: in STD_LOGIC_VECTOR (15 downto 0);
 --EXE 
 UPD: in STD_LOGIC;
-enADD, enXOR, enMOVREGTOREG, enMOVIMMDATA, enMOVAL, enMOVBL, enINC, enDEC, enROL, enROR, enNEG, enOUT, muxReg2, muxReg1: out STD_LOGIC;
+enADD, enXOR, enMOVREGTOREG, enMOVIMMDATA, enMOVAL, enMOVBL, enINC, enDEC, enROL, enROR, enNEG, enOUT, muxReg2, muxReg1, muxReg3: out STD_LOGIC;
 immdata : out std_LOGIC_VECTOR (7 downto 0));
 end;
 architecture enabler of decoder is
 begin
-process(UPD) begin
-if instruction(15 downto 8) ="10110000" then enMOVAL <= UPD; enMOVBL <= not UPD; immdata <= instruction(7 downto 0);
-elsif instruction(15 downto 8) ="10110011" then enMOVAL <= not UPD; enMOVBL <= UPD; immdata <= instruction(7 downto 0);
+process(instruction, UPD) begin
+if instruction(15 downto 8) ="10110000" then enMOVAL <= UPD; enMOVBL <= '0'; immdata <= instruction(7 downto 0);
+elsif instruction(15 downto 8) ="10110011" then enMOVAL <= '0'; enMOVBL <= UPD; immdata <= instruction(7 downto 0);
 else enMOVAL <= '0'; enMOVBL <= '0';
 end if;
 end process;
@@ -27,6 +27,7 @@ enNEG <= instruction(15) and instruction(14) and instruction(13) and instruction
 enOUT <= instruction(15) and instruction(14) and instruction(13) and not instruction(12) and not instruction(11) and instruction(10) and instruction(9) and not instruction(8) and instruction(7) and instruction(6) and not instruction(5) and not instruction(4) and not instruction(3);
 muxReg2 <= not instruction(5) and instruction(4) and instruction(3); --1 for BL, 0 for AL
 muxReg1 <= not instruction(2) and instruction(1) and instruction(0); --1 for BL, 0 for AL
+muxReg3 <= (instruction(15) and instruction(14) and instruction(13) and not instruction(12) and not instruction(11) and instruction(10) and instruction(9) and not instruction(8) and instruction(7) and instruction(6) and not instruction(5) and not instruction(4) and not instruction(3)) and (not instruction(2) and instruction(1) and instruction(0)); -- (enOut and muxreg1)
 end;
 
 --giant multiplexer going into reg3
@@ -43,7 +44,7 @@ entity giantMux is
 		enROL		: in std_logic; --maybe just one signal for enable ROT?
 	 	enROR		: in std_logic;
 		enNEG		: in std_logic;
-	 	enOUT		: in std_logic; --do we need this one?
+	 	--enOUT		: in std_logic; --do we need this one?
 	 
 		vecadd      	: in std_logic_vector (7 downto 0);
 		vecxor      	: in std_logic_vector (7 downto 0);
@@ -54,7 +55,7 @@ entity giantMux is
 		vecrot      	: in std_logic_vector (7 downto 0); --merged ROL and ROT into one entity
 		--ror      	: in std_logic_vector (7 downto 0);
 		vecneg      	: in std_logic_vector (7 downto 0);
-		vecout      	: in std_logic_vector (7 downto 0);
+		--vecout      	: in std_logic_vector (7 downto 0);
 	 
 		c		: out std_logic_vector(7 downto 0));
 end entity;
@@ -71,7 +72,7 @@ begin
 	elsif enROL = '1' then c <= vecrot;
 	elsif enROR = '1' then c <= vecrot;
 	elsif enNEG = '1'then c <= vecneg;
-	elsif enOUT = '1' then c <= vecout;
+	--elsif enOUT = '1' then c <= vecout;
 	end if;
 	end process;
 end;
@@ -131,13 +132,12 @@ entity reg8bit is
 		UPD		: in std_logic;
 		rin      : in std_logic_vector (7 downto 0);
 		rout		: out std_logic_vector (7 downto 0)
-		--routnot	: out std_logic_vector (7 downto 0)
 	);
 
 end entity;
 architecture r8 of reg8bit is
 	
-	signal rt: std_logic_vector (7 downto 0);
+	--signal rt: std_logic_vector (7 downto 0);
 
 begin
 
@@ -147,13 +147,46 @@ begin
 		if (UPD = '1') then
 
 				rout <= rin;
-				--routnot <= not rin;
 
 		end if;
 	end process;
 
 	
 end r8;
+
+--2 x 7 Bit register
+library IEEE; use IEEE.STD_Logic_1164.all;
+entity reg2x7 is
+
+	port 
+	(	
+		UPD		: in std_logic;
+		rAin      : in std_logic_vector (6 downto 0);
+		rBin      : in std_logic_vector (6 downto 0);
+		rAout		: out std_logic_vector (6 downto 0);
+		rBout		: out std_logic_vector (6 downto 0)
+	);
+
+end entity;
+architecture outputreg of reg2x7 is
+	
+	--signal rt: std_logic_vector (7 downto 0);
+
+begin
+
+	process (UPD)
+	begin
+		
+		if (UPD = '1') then
+
+				rAout <= rAin;
+				rBout <= rBin;
+
+		end if;
+	end process;
+
+	
+end outputreg;
 
 --rotators
 library IEEE; use IEEE.STD_Logic_1164.all;
@@ -454,7 +487,7 @@ architecture Project of LogicProject is
 		port(instruction: in STD_LOGIC_VECTOR (15 downto 0);
 		--EXE, 
 		UPD: in STD_LOGIC;
-		enADD, enXOR, enMOVREGTOREG, enMOVIMMDATA, enMOVAL, enMOVBL, enINC, enDEC, enROL, enROR, enNEG, enOUT, muxReg2, muxReg1: out STD_LOGIC;
+		enADD, enXOR, enMOVREGTOREG, enMOVIMMDATA, enMOVAL, enMOVBL, enINC, enDEC, enROL, enROR, enNEG, enOUT, muxReg2, muxReg1, muxReg3: out STD_LOGIC;
 		immdata : out std_LOGIC_VECTOR (7 downto 0));
 	end component;
 	component adder
@@ -479,6 +512,19 @@ architecture Project of LogicProject is
 		);
 
 		end component;
+		
+		component reg2x7 is
+
+		port 
+		(	
+		UPD		: in std_logic;
+		rAin      : in std_logic_vector (6 downto 0);
+		rBin      : in std_logic_vector (6 downto 0);
+		rAout		: out std_logic_vector (6 downto 0);
+		rBout		: out std_logic_vector (6 downto 0)
+		);
+		end component;
+
 	component rotator
 		port 
 		(
@@ -568,7 +614,7 @@ architecture Project of LogicProject is
 		enROL		: in std_logic; --maybe just one signal for enable ROT?
 	 	enROR		: in std_logic;
 		enNEG		: in std_logic;
-	 	enOUT		: in std_logic; --do we need this one?
+	 	--enOUT		: in std_logic; --do we need this one?
 	 
 		vecadd      	: in std_logic_vector (7 downto 0);
 		vecxor      	: in std_logic_vector (7 downto 0);
@@ -579,7 +625,7 @@ architecture Project of LogicProject is
 		vecrot      	: in std_logic_vector (7 downto 0); --merged ROL and ROT into one entity
 		--ror      	: in std_logic_vector (7 downto 0);
 		vecneg      	: in std_logic_vector (7 downto 0);
-		vecout      	: in std_logic_vector (7 downto 0);
+		--vecout      	: in std_logic_vector (7 downto 0);
 	 
 		c		: out std_logic_vector(7 downto 0)
 		
@@ -605,17 +651,22 @@ architecture Project of LogicProject is
 		signal giantmuxout: std_logic_vector(7 downto 0);
 		--signal notgiantmuxout: std_logic_vector(7 downto 0); --do we need this(?)
 		
+		--4th reg, reg is for holding output
+		signal muxReg3: std_logic;
+		signal mux3out: std_logic_vector(7 downto 0);
 begin
 	--all of our port maps
-	instructionDecoder: decoder port map(inpt, upd, enADD, enXOR, enMOVREGTOREG, enMOVIMMDATA, enMOVAL, enMOVBL, enINC, enDEC, enROL, enROR, enNEG, enOUT, muxReg2, muxReg1, immdata);
+	instructionDecoder: decoder port map(inpt, upd, enADD, enXOR, enMOVREGTOREG, enMOVIMMDATA, enMOVAL, enMOVBL, enINC, enDEC, enROL, enROR, enNEG, enOUT, muxReg2, muxReg1, muxReg3, immdata);
 	AL: reg8bit port map(enMOVAL, reg3out, alout); --enMOVAL or upd (?)
 	BL: reg8bit port map(enMOVBL, reg3out, blout); --enMOVBL or upd (?)
 	reg3: reg8bit port map(exe, giantmuxout, reg3out); --whats the upd for this one(?) ***this should update on the execute clock*** -Tyler
+	--reg4: reg2x7 port map(upd, tempoutputA, tempoutputB ,outputA, outputB);
 	--mux1 is for reg1 and reg, mux2 is for reg2 in input parameters
 	mux1: multiplexer1 port map(alout, blout, mux1out, muxReg1);
 	mux2: multiplexer1 port map(alout, blout, mux2out, muxReg2); --idk if immdata into mux2 is a good idea (?)**probably not, immdata straight into giantmux -danny
+	mux3: multiplexer1 port map(alout, blout, mux3out, muxReg3); 
 	--changed vecmovimmdata to immdata
-	bigmux: giantMux port map(exe, enAdd, enXOR, enMOVIMMDATA, enMOVREGTOREG, enINC, enDEC, enROL, enROR, enNEG, enOUT, vecadd, vecxor, immdata, vecmovRegtoReg, vecinc, vecdec, vecrot, vecneg, vecout, giantmuxout);
+	bigmux: giantMux port map(exe, enAdd, enXOR, enMOVIMMDATA, enMOVREGTOREG, enINC, enDEC, enROL, enROR, enNEG,  vecadd, vecxor, immdata, vecmovRegtoReg, vecinc, vecdec, vecrot, vecneg, giantmuxout);
 	regAdder: adder port map(mux1out, mux2out, vecadd);
 	regXor: xorcomp port map(exe, upd, mux1out, mux2out, vecxor);
 	regInc: increment port map(mux1out, vecinc);
@@ -624,7 +675,7 @@ begin
 	regNeg: negate port map(mux1out, vecneg);
 	
 	--(?) How to connect display_hex
-	regOut: display_hex port map(mux1out, outputA, outputB);
+	regOut: display_hex port map(mux3out, outputA, outputB);
 	
 	--(?) issues 	: probably make it so OUT doesnt go into reg3? or is it okay
 	--					: some of our components have exe and upd, some dont
