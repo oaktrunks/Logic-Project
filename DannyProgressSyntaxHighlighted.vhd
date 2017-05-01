@@ -129,8 +129,8 @@ entity reg8bit is
 	(	
 		UPD		: in std_logic;
 		rin      : in std_logic_vector (7 downto 0);
-		rout		: out std_logic_vector (7 downto 0);
-		routnot	: out std_logic_vector (7 downto 0)
+		rout		: out std_logic_vector (7 downto 0)
+		--routnot	: out std_logic_vector (7 downto 0)
 	);
 
 end entity;
@@ -146,7 +146,7 @@ begin
 		if (UPD = '1') then
 
 				rout <= rin;
-				routnot <= not rin;
+				--routnot <= not rin;
 
 		end if;
 	end process;
@@ -472,8 +472,8 @@ architecture Project of LogicProject is
 		(	
 		UPD		: in std_logic;
 		rin      : in std_logic_vector (7 downto 0);
-		rout		: out std_logic_vector (7 downto 0);
-		routnot	: out std_logic_vector (7 downto 0)
+		rout		: out std_logic_vector (7 downto 0)
+		--routnot	: out std_logic_vector (7 downto 0)
 		);
 
 		end component;
@@ -584,26 +584,31 @@ architecture Project of LogicProject is
 		);
 		end component;
 		--all of our signals
+		
 		--enable signals & immdata
 		signal enADD, enXOR, enMOVREGTOREG, enMOVIMMDATA, enMOVAL, enMOVBL, enINC, enDEC, enROL, enROR, enNEG, enOUT, muxReg2, muxReg1: STD_LOGIC;
 		signal immdata : std_LOGIC_VECTOR (7 downto 0);
+		
 		--mux & regs
 		signal regin, mux1out, mux2out, alout, blout, reg3out : std_logic_vector (7 downto 0);
-		signal notalout, notblout: std_logic_vector (7 downto 0); -- do we need these(?)
+		--signal notalout, notblout: std_logic_vector (7 downto 0); -- do we need these(?)
+		
 		--giant mux input and component outputs
 		signal vecadd, vecxor, vecmovimmdata, vecmovRegtoReg, vecinc, vecdec, vecrot, vecneg, vecout, c : std_LOGIC_VECTOR (7 downto 0);
+		
 		--adder
 		--signal carryin, carryout : std_logic;
+		
 		--giant mux
 		signal giantmuxout: std_logic_vector(7 downto 0);
-		signal notgiantmuxout: std_logic_vector(7 downto 0); --do we need this(?)
+		--signal notgiantmuxout: std_logic_vector(7 downto 0); --do we need this(?)
 		
 begin
 	--all of our port maps
 	instructionDecoder: decoder port map(input, enADD, enXOR, enMOVREGTOREG, enMOVIMMDATA, enMOVAL, enMOVBL, enINC, enDEC, enROL, enROR, enNEG, enOUT, muxReg2, muxReg1, immdata);
-	AL: reg8bit port map(enMOVAL, reg3out, alout, notalout); --enMOVAL or upd (?)
-	BL: reg8bit port map(enMOVBL, reg3out, blout, notblout); --enMOVBL or upd (?)
-	reg3: reg8bit port map(exe, giantmuxout, reg3out, notgiantmuxout); --whats the upd for this one(?) ***this should update on the execute clock*** -Tyler
+	AL: reg8bit port map(enMOVAL, reg3out, alout); --enMOVAL or upd (?)
+	BL: reg8bit port map(enMOVBL, reg3out, blout); --enMOVBL or upd (?)
+	reg3: reg8bit port map(exe, giantmuxout, reg3out); --whats the upd for this one(?) ***this should update on the execute clock*** -Tyler
 	--mux1 is for reg1 and reg, mux2 is for reg2 in input parameters
 	mux1: multiplexer1 port map(alout, blout, mux1out, muxReg1);
 	mux2: multiplexer2 port map(alout, blout, immdata, mux2out, muxReg2, enMOVIMMDATA); --idk if immdata into mux2 is a good idea (?), it might be
