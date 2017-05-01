@@ -586,10 +586,10 @@ architecture Project of LogicProject is
 		signal enADD, enXOR, enMOVREGTOREG, enMOVIMMDATA, enMOVAL, enMOVBL, enINC, enDEC, enROL, enROR, enNEG, enOUT, muxReg2, muxReg1: STD_LOGIC;
 		signal immdata : std_LOGIC_VECTOR (7 downto 0);
 		--mux & regs
-		signal al, bl, regin, mux1out, mux2out, alout, blout, reg3out : std_logic_vector (7 downto 0);
+		signal regin, mux1out, mux2out, alout, blout, reg3out : std_logic_vector (7 downto 0);
 		signal notalout, notblout: std_logic_vector (7 downto 0); -- do we need these(?)
 		--giant mux input and component outputs
-		signal vecadd, vecxor, vecmovimmdata, vecmovRegtoReg, vecinc, vecdec, vectrot, vecneg, vecout, c : std_LOGIC_VECTOR (7 downto 0);
+		signal vecadd, vecxor, vecmovimmdata, vecmovRegtoReg, vecinc, vecdec, vecrot, vecneg, vecout, c : std_LOGIC_VECTOR (7 downto 0);
 		--adder
 		signal carryin, carryout : std_logic;
 		--giant mux
@@ -605,7 +605,7 @@ begin
 	--mux1 is for reg1 and reg, mux2 is for reg2 in input parameters
 	mux1: multiplexer1 port map(alout, blout, mux1out, muxReg1);
 	mux2: multiplexer2 port map(alout, blout, immdata, mux2out, muxReg2, enMOVIMMDATA); --idk if immdata into mux2 is a good idea (?), it might be
-	bigmux: giantMux port map(exe, enAdd, enXOR, en MOVIMMDATA, enMOVREGTOREG, enINC, enDEC, enROL, enROR, enNEG, enOUT, vecadd, vecxor, vecmovimmdata, vecmovRegtoReg, vecinc, vecdec, vecrot, vecneg, vecout, giantmuxout);
+	bigmux: giantMux port map(exe, enAdd, enXOR, enMOVIMMDATA, enMOVREGTOREG, enINC, enDEC, enROL, enROR, enNEG, enOUT, vecadd, vecxor, vecmovimmdata, vecmovRegtoReg, vecinc, vecdec, vecrot, vecneg, vecout, giantmuxout);
 	regAdder: adder port map(mux1out, mux2out, carryin, vecadd, carryout);
 	regRotator: rotator port map(mux1out, vecrot);
 	regXor: xorcomp port map(exe, upd, mux1out, mux2out, vecxor);
