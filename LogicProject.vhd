@@ -1,9 +1,9 @@
 --Decoder
 library IEEE; use IEEE.STD_Logic_1164.all;
 entity decoder is
-port(instruction: in STD_LOGIC_VECTOR (15 downto 0); clk : in std_logic; enable : in std_logic;
-EXE, UPD: in STD_LOGIC;
-enADD, enXOR, enMOVREGTOREG, enMOVAL, enMOVBL, enINC, enDEC, enROL, enROR, enNEG, enOUT, muxReg2, muxReg1: out STD_LOGIC;
+port(instruction: in STD_LOGIC_VECTOR (15 downto 0);
+--EXE, UPD: in STD_LOGIC;
+enADD, enXOR, enMOVREGTOREG, enMOVIMMDATA, enMOVAL, enMOVBL, enINC, enDEC, enROL, enROR, enNEG, enOUT, muxReg2, muxReg1: out STD_LOGIC;
 immdata : out std_LOGIC_VECTOR (7 downto 0));
 end;
 architecture enabler of decoder is
@@ -17,6 +17,7 @@ end process;
 enADD <= not instruction(15) and not instruction(14) and not instruction(13) and not instruction(12) and not instruction(11) and not instruction(10) and not instruction(9) and not instruction(8) and instruction(7) and instruction(6);
 enXOR <= not instruction(15) and not instruction(14) and instruction(13) and instruction(12) and not instruction(11) and not instruction(10) and not instruction(9) and not instruction(8) and instruction(7) and instruction(6);
 enMOVREGTOREG <= instruction(15) and not instruction(14) and not instruction(13) and not instruction(12) and instruction(11) and not instruction(10) and not instruction(9) and not instruction(8) and instruction(7) and instruction(6);
+enMOVIMMDATA <= instruction(15) and not instruction(14) and instruction(13) and instruction(12) and not instruction(11);
 enINC <= instruction(15) and instruction(14) and instruction(13) and instruction(12) and instruction(11) and instruction(10) and instruction(9) and not instruction(8) and instruction(7) and instruction(6) and not instruction(5) and not instruction(4) and not instruction(3);
 enDEC <= instruction(15) and instruction(14) and instruction(13) and instruction(12) and instruction(11) and instruction(10) and instruction(9) and not instruction(8) and instruction(7) and instruction(6) and not instruction(5) and not instruction(4) and instruction(3);
 enROL <= instruction(15) and instruction(14) and not instruction(13) and instruction(12) and not instruction(11) and not instruction(10) and not instruction(9) and not instruction(8) and instruction(7) and instruction(6) and not instruction(5) and not instruction(4) and not instruction(3);
@@ -34,7 +35,7 @@ entity giantMux is
 	(	exe		: in std_logic; --execute clock
 		enADD		: in std_logic;
 		enXOR		: in std_logic;
-	 	enMOVimmdata	: in std_logic; -- do we need this one?
+	 	enMOVIMMDATA	: in std_logic; -- do we need this one?
 	 	enMOVREGTOREG	: in std_logic;
 		enINC		: in std_logic;
 	 	enDEC		: in std_logic;
@@ -62,7 +63,7 @@ begin
 	begin
 	if enADD = '1' then c <= vecadd;
 	elsif enXOR = '1' then c <= vecxor;
-	elsif enMOVimmdata = '1' then c <= vecmovimmdata;
+	elsif enMOVIMMDATA = '1' then c <= vecmovimmdata;
 	elsif enMOVREGTOREG = '1' then c <= vecmovRegtoReg;
 	elsif enINC = '1' then c <= vecinc;
 	elsif enDEC = '1' then c <= vecdec;
@@ -82,9 +83,9 @@ entity adder is
 	(
 		a	: in std_logic_vector (7 downto 0);
 		b	: in std_logic_vector (7 downto 0);
-		cin	: in std_logic;
-		sum	: out std_logic_vector (7 downto 0);
-		cout	: out std_logic
+		--cin	: in std_logic;
+		sum	: out std_logic_vector (7 downto 0)
+		--cout	: out std_logic
 		
 	);
 
@@ -94,8 +95,8 @@ architecture sum of adder is
 signal c1,c2,c3,c4,c5,c6,c7: std_logic;
 begin
 
-	sum(0) <= a(0) xor b(0) xor cin;
-	c1 <= (a(0) and b(0)) or (a(0) and cin) or (b(0) and cin);
+	sum(0) <= a(0) xor b(0); 
+	c1 <= (a(0) and b(0)) or (a(0)) or (b(0));
 	
 	sum(1) <= a(1) xor b(1) xor c1;
 	c2 <= (a(1) and b(1)) or (a(1) and c1) or (b(1) and c1);
@@ -116,7 +117,7 @@ begin
 	c7 <= (a(6) and b(6)) or (a(6) and c6) or (b(6) and c6);
 	
 	sum(7) <= a(7) xor b(7) xor c7;
-	cout <= (a(7) and b(7)) or (a(7) and c7) or (b(7) and c7);
+	--cout <= (a(7) and b(7)) or (a(7) and c7) or (b(7) and c7);
 	
 end sum;
 
@@ -128,8 +129,8 @@ entity reg8bit is
 	(	
 		UPD		: in std_logic;
 		rin      : in std_logic_vector (7 downto 0);
-		rout		: out std_logic_vector (7 downto 0);
-		routnot	: out std_logic_vector (7 downto 0)
+		rout		: out std_logic_vector (7 downto 0)
+		--routnot	: out std_logic_vector (7 downto 0)
 	);
 
 end entity;
@@ -145,7 +146,7 @@ begin
 		if (UPD = '1') then
 
 				rout <= rin;
-				routnot <= not rin;
+				--routnot <= not rin;
 
 		end if;
 	end process;
@@ -224,9 +225,9 @@ entity increment is
 	port 
 	(
 		a	: in std_logic_vector (7 downto 0);
-		cin	: in std_logic;
-		inc	: out std_logic_vector (7 downto 0);
-		cout	: out std_logic
+		--cin	: in std_logic;
+		inc	: out std_logic_vector (7 downto 0)
+		--cout	: out std_logic
 		
 	);
 
@@ -235,9 +236,9 @@ end entity;
 architecture inc of increment is
 signal c1, c2, c3, c4, c5, c6, c7 : std_logic; signal b	: std_logic_vector (7 downto 0);
 begin
-	b <= "0000001";
-	inc(0) <= a(0) xor b(0) xor cin;
-	c1 <= (a(0) and b(0)) or (a(0) and cin) or (b(0) and cin);
+	b <= "00000001";
+	inc(0) <= a(0) xor b(0);
+	c1 <= (a(0) and b(0)) or (a(0)) or (b(0));
 	
 	inc(1) <= a(1) xor b(1) xor c1;
 	c2 <= (a(1) and b(1)) or (a(1) and c1) or (b(1) and c1);
@@ -258,7 +259,7 @@ begin
 	c7 <= (a(6) and b(6)) or (a(6) and c6) or (b(6) and c6);
 	
 	inc(7) <= a(7) xor b(7) xor c7;
-	cout <= (a(7) and b(7)) or (a(7) and c7) or (b(7) and c7);
+	--cout <= (a(7) and b(7)) or (a(7) and c7) or (b(7) and c7);
 	
 end inc;
 
@@ -266,15 +267,18 @@ end inc;
 library IEEE;
 use IEEE.STD_Logic_1164.all;
 
-entity Display_hex is
-port (X : in STD_Logic_VECTOR (7 downto 4	);
-	   Y : in STD_Logic_VECTOR (3 downto 0	);
+entity display_hex is
+port (Z : in STD_LOGIC_VECTOR (7 downto 0);
+		--X : in STD_Logic_VECTOR (3 downto 0	);
+	   --Y : in STD_Logic_VECTOR (3 downto 0	);
 		a : out STD_Logic_VECTOR(6 downto 0);
 		b : out STD_Logic_VECTOR (6 downto 0));
 end entity;
 
-architecture struct of Display_hex is
+architecture struct of display_hex is
+signal X, Y : std_LOGIC_VECTOR (3 downto 0);
 begin
+	X <= Z(7 downto 4); Y <= Z(3 downto 0);
 	process (X) begin
 	
 			if X = "0000" then a <= "1000000";
@@ -322,9 +326,9 @@ entity negate is
 	port 
 	(
 		a	: in std_logic_vector (7 downto 0);
-		cin	: in std_logic;
-		neg	: out std_logic_vector (7 downto 0);
-		cout	: out std_logic
+		--cin	: in std_logic;
+		neg	: out std_logic_vector (7 downto 0)
+		--cout	: out std_logic
 		
 	);
 
@@ -334,9 +338,9 @@ architecture neg of negate is
 signal c1, c2, c3, c4, c5, c6, c7 : std_logic; signal temp, b	: std_logic_vector (7 downto 0);
 begin
 	temp <= not a;
-	b <= "0000001";
-	neg(0) <= temp(0) xor b(0) xor cin;
-	c1 <= (temp(0) and b(0)) or (temp(0) and cin) or (b(0) and cin);
+	b <= "00000001";
+	neg(0) <= temp(0) xor b(0);
+	c1 <= (temp(0) and b(0)) or (temp(0)) or (b(0));
 	
 	neg(1) <= temp(1) xor b(1) xor c1;
 	c2 <= (temp(1) and b(1)) or (temp(1) and c1) or (b(1) and c1);
@@ -357,7 +361,7 @@ begin
 	c7 <= (temp(6) and b(6)) or (temp(6) and c6) or (b(6) and c6);
 	
 	neg(7) <= temp(7) xor b(7) xor c7;
-	cout <= (temp(7) and b(7)) or (temp(7) and c7) or (b(7) and c7);
+	--cout <= (temp(7) and b(7)) or (temp(7) and c7) or (b(7) and c7);
 end neg;
 
 --decrement
@@ -438,15 +442,17 @@ port(
 	input: in STD_LOGIC_VECTOR (15 downto 0);
 	upd: in std_LOGIC;
 	exe: in std_LOGIC;
-	output: out STD_LOGIC_VECTOR (15 downto 0)
+	--output: out STD_LOGIC_VECTOR (15 downto 0) commented this out in favor of outputA and outputB to control lights
+	outputA: out STD_logic_vector(6 downto 0); --left light
+	outputB: out STD_logic_vector(6 downto 0) --left light
 );
 end;
 architecture Project of LogicProject is
 
 	component decoder is
-		port(instruction: in STD_LOGIC_VECTOR (15 downto 0); clk : in std_logic; enable : in std_logic;
-		EXE, UPD: in STD_LOGIC;
-		enADD, enXOR, enMOVREGTOREG, enMOVAL, enMOVBL, enINC, enDEC, enROL, enROR, enNEG, enOUT, muxReg2, muxReg1: out STD_LOGIC;
+		port(instruction: in STD_LOGIC_VECTOR (15 downto 0);
+		--EXE, UPD: in STD_LOGIC;
+		enADD, enXOR, enMOVREGTOREG, enMOVIMMDATA, enMOVAL, enMOVBL, enINC, enDEC, enROL, enROR, enNEG, enOUT, muxReg2, muxReg1: out STD_LOGIC;
 		immdata : out std_LOGIC_VECTOR (7 downto 0));
 	end component;
 	component adder
@@ -454,9 +460,9 @@ architecture Project of LogicProject is
 		(
 		a	: in std_logic_vector (7 downto 0);
 		b	: in std_logic_vector (7 downto 0);
-		cin	: in std_logic;
-		sum	: out std_logic_vector (7 downto 0);
-		cout	: out std_logic
+		--cin	: in std_logic;
+		sum	: out std_logic_vector (7 downto 0)
+		--cout	: out std_logic
 		
 		);
 
@@ -466,8 +472,8 @@ architecture Project of LogicProject is
 		(	
 		UPD		: in std_logic;
 		rin      : in std_logic_vector (7 downto 0);
-		rout		: out std_logic_vector (7 downto 0);
-		routnot	: out std_logic_vector (7 downto 0)
+		rout		: out std_logic_vector (7 downto 0)
+		--routnot	: out std_logic_vector (7 downto 0)
 		);
 
 		end component;
@@ -475,7 +481,9 @@ architecture Project of LogicProject is
 		port 
 		(
 		a	: in std_logic_vector (7 downto 0);
-		b	: out std_logic_vector (7 downto 0)
+		b	: out std_logic_vector (7 downto 0);
+		enROR 	: in std_logic;
+		enROL 	: in std_logic
 		);
 
 		end component;
@@ -491,16 +499,17 @@ architecture Project of LogicProject is
 		port 
 		(
 		a	: in std_logic_vector (7 downto 0);
-		cin	: in std_logic;
-		inc	: out std_logic_vector (7 downto 0);
-		cout	: out std_logic
+		--cin	: in std_logic;
+		inc	: out std_logic_vector (7 downto 0)
+		--cout	: out std_logic
 		
 		);
 
 		end component;
 	component display_hex
-		port (X : in STD_Logic_VECTOR (7 downto 4	);
-	   Y : in STD_Logic_VECTOR (3 downto 0	);
+		port (Z : in STD_LOGIC_VECTOR (7 downto 0);
+		--X : in STD_Logic_VECTOR (3 downto 0	);
+	   --Y : in STD_Logic_VECTOR (3 downto 0	);
 		a : out STD_Logic_VECTOR(6 downto 0);
 		b : out STD_Logic_VECTOR (6 downto 0));
 		end component;
@@ -508,9 +517,9 @@ architecture Project of LogicProject is
 		port 
 		(
 		a	: in std_logic_vector (7 downto 0);
-		cin	: in std_logic;
-		neg	: out std_logic_vector (7 downto 0);
-		cout	: out std_logic
+		--cin	: in std_logic;
+		neg	: out std_logic_vector (7 downto 0)
+		--cout	: out std_logic
 		
 		);
 
@@ -523,15 +532,98 @@ architecture Project of LogicProject is
 		);
 
 		end component;
-	component multiplexer
+	component multiplexer1
 		port 
 		(	
 		a      	: in std_logic_vector (7 downto 0);
 		b      	: in std_logic_vector (7 downto 0);
-		c	: out std_logic_vector(7 downto 0);
-		enBL	: in std_logic --1 for bl, 0 for al. comes from muxReg1 and muxReg2 from decoder
+		c			: out std_logic_vector(7 downto 0);
+		enBL		: in std_logic --1 for bl, 0 for al. comes from muxReg1 and muxReg2 from decoder
 		);
 		end component;
+	component multiplexer2
+		port 
+			(	
+		al      	: in std_logic_vector (7 downto 0);
+		bl      	: in std_logic_vector (7 downto 0);
+		immd		: in std_logic_vector(7 downto 0);
+		d			: out std_logic_vector(7 downto 0);
+		enBL		: in std_logic; --1 for bl, 0 for al. comes from muxReg1 and muxReg2 from decoder
+		enMOVIMMDATA: in std_logic
+		);
+		end component;
+		
+		component giantMux
+		port
+		(
+		exe		: in std_logic; --execute clock
+		enADD		: in std_logic;
+		enXOR		: in std_logic;
+	 	enMOVIMMDATA	: in std_logic; -- do we need this one?
+	 	enMOVREGTOREG	: in std_logic;
+		enINC		: in std_logic;
+	 	enDEC		: in std_logic;
+		enROL		: in std_logic; --maybe just one signal for enable ROT?
+	 	enROR		: in std_logic;
+		enNEG		: in std_logic;
+	 	enOUT		: in std_logic; --do we need this one?
+	 
+		vecadd      	: in std_logic_vector (7 downto 0);
+		vecxor      	: in std_logic_vector (7 downto 0);
+		vecmovimmdata      : in std_logic_vector (7 downto 0);
+		vecmovRegtoReg     : in std_logic_vector (7 downto 0);
+		vecinc      	: in std_logic_vector (7 downto 0);
+		vecdec      	: in std_logic_vector (7 downto 0);
+		vecrot      	: in std_logic_vector (7 downto 0); --merged ROL and ROT into one entity
+		--ror      	: in std_logic_vector (7 downto 0);
+		vecneg      	: in std_logic_vector (7 downto 0);
+		vecout      	: in std_logic_vector (7 downto 0);
+	 
+		c		: out std_logic_vector(7 downto 0)
+		
+		);
+		end component;
+		--all of our signals
+		
+		--enable signals & immdata
+		signal enADD, enXOR, enMOVREGTOREG, enMOVIMMDATA, enMOVAL, enMOVBL, enINC, enDEC, enROL, enROR, enNEG, enOUT, muxReg2, muxReg1: STD_LOGIC;
+		signal immdata : std_LOGIC_VECTOR (7 downto 0);
+		
+		--mux & regs
+		signal regin, mux1out, mux2out, alout, blout, reg3out : std_logic_vector (7 downto 0);
+		--signal notalout, notblout: std_logic_vector (7 downto 0); -- do we need these(?)
+		
+		--giant mux input and component outputs
+		signal vecadd, vecxor, vecmovimmdata, vecmovRegtoReg, vecinc, vecdec, vecrot, vecneg, vecout, c : std_LOGIC_VECTOR (7 downto 0);
+		
+		--adder
+		--signal carryin, carryout : std_logic;
+		
+		--giant mux
+		signal giantmuxout: std_logic_vector(7 downto 0);
+		--signal notgiantmuxout: std_logic_vector(7 downto 0); --do we need this(?)
+		
 begin
-
+	--all of our port maps
+	instructionDecoder: decoder port map(input, enADD, enXOR, enMOVREGTOREG, enMOVIMMDATA, enMOVAL, enMOVBL, enINC, enDEC, enROL, enROR, enNEG, enOUT, muxReg2, muxReg1, immdata);
+	AL: reg8bit port map(enMOVAL, reg3out, alout); --enMOVAL or upd (?)
+	BL: reg8bit port map(enMOVBL, reg3out, blout); --enMOVBL or upd (?)
+	reg3: reg8bit port map(exe, giantmuxout, reg3out); --whats the upd for this one(?) ***this should update on the execute clock*** -Tyler
+	--mux1 is for reg1 and reg, mux2 is for reg2 in input parameters
+	mux1: multiplexer1 port map(alout, blout, mux1out, muxReg1);
+	mux2: multiplexer2 port map(alout, blout, immdata, mux2out, muxReg2, enMOVIMMDATA); --idk if immdata into mux2 is a good idea (?), it might be
+	bigmux: giantMux port map(exe, enAdd, enXOR, enMOVIMMDATA, enMOVREGTOREG, enINC, enDEC, enROL, enROR, enNEG, enOUT, vecadd, vecxor, vecmovimmdata, vecmovRegtoReg, vecinc, vecdec, vecrot, vecneg, vecout, giantmuxout);
+	regAdder: adder port map(mux1out, mux2out, vecadd);
+	regXor: xorcomp port map(exe, upd, mux1out, mux2out, vecxor);
+	regInc: increment port map(mux1out, vecinc);
+	regDec: decrement port map(mux1out, vecdec);
+	regRot: rotator port map(mux1out, vecrot, enROR, enROL);
+	regNeg: negate port map(mux1out, vecneg);
+	
+	--(?) How to connect display_hex
+	regOut: display_hex port map(mux1out, outputA, outputB);
+	
+	--(?) issues 	: probably make it so OUT doesnt go into reg3? or is it okay
+	--					: some of our components have exe and upd, some dont
+	--					: should we remove cout and cin from adder and incrementer and negator? *** We did -Danny &Tyler
 end;
