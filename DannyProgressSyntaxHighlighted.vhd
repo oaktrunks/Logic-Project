@@ -102,7 +102,7 @@ signal c1,c2,c3,c4,c5,c6,c7: std_logic;
 begin
 
 	sum(0) <= a(0) xor b(0); 
-	c1 <= (a(0) and b(0)) or (a(0)) or (b(0));
+	c1 <= (a(0) and b(0));
 	
 	sum(1) <= a(1) xor b(1) xor c1;
 	c2 <= (a(1) and b(1)) or (a(1) and c1) or (b(1) and c1);
@@ -210,7 +210,7 @@ architecture rot of rotator is
 begin
 	process(a)
 	begin
-	if enROR = '1' then --rotate right
+	if enROL = '1' then --rotate left
 		b(7) <= a(6);
 		b(6) <= a(5);
 		b(5) <= a(4);
@@ -219,7 +219,7 @@ begin
 		b(2) <= a(1);
 		b(1) <= a(0);
 		b(0) <= a(7);
-	elsif enROL = '1' then --rotate left
+	elsif enROR = '1' then --rotate right
 		b(0) <= a(1);
 		b(1) <= a(2);
 		b(2) <= a(3);
@@ -276,7 +276,7 @@ signal c1, c2, c3, c4, c5, c6, c7 : std_logic; signal b	: std_logic_vector (7 do
 begin
 	b <= "00000001";
 	inc(0) <= a(0) xor b(0);
-	c1 <= (a(0) and b(0)) or (a(0)) or (b(0));
+	c1 <= (a(0) and b(0));
 	
 	inc(1) <= a(1) xor b(1) xor c1;
 	c2 <= (a(1) and b(1)) or (a(1) and c1) or (b(1) and c1);
@@ -375,10 +375,17 @@ end entity;
 architecture neg of negate is
 signal c1, c2, c3, c4, c5, c6, c7 : std_logic; signal temp, b	: std_logic_vector (7 downto 0);
 begin
-	temp <= not a;
+	temp(7) <= not a(7);
+	temp(6) <= not a(6);
+	temp(5) <= not a(5);
+	temp(4) <= not a(4);
+	temp(3) <= not a(3);
+	temp(2) <= not a(2);
+	temp(1) <= not a(1);
+	temp(0) <= not a(0);
 	b <= "00000001";
 	neg(0) <= temp(0) xor b(0);
-	c1 <= (temp(0) and b(0)) or (temp(0)) or (b(0));
+	c1 <= (temp(0) and b(0));
 	
 	neg(1) <= temp(1) xor b(1) xor c1;
 	c2 <= (temp(1) and b(1)) or (temp(1) and c1) or (b(1) and c1);
