@@ -61,7 +61,7 @@ architecture giant of giantMux is
 begin
 	process(exe)
 	begin
-	if enADD = '1' then c <= vecadd;
+	if 	enADD = '1' then c <= vecadd;
 	elsif enXOR = '1' then c <= vecxor;
 	elsif enMOVIMMDATA = '1' then c <= vecmovimmdata;
 	elsif enMOVREGTOREG = '1' then c <= vecmovRegtoReg;
@@ -279,7 +279,7 @@ architecture struct of display_hex is
 signal X, Y : std_LOGIC_VECTOR (3 downto 0);
 begin
 	X <= Z(7 downto 4); Y <= Z(3 downto 0);
-	process (X) begin
+	process (Z) begin
 	
 			if X = "0000" then a <= "1000000";
 			elsif X = "0001" then   a <= "1111001";
@@ -439,7 +439,7 @@ end mux1;
 library IEEE; use IEEE.STD_Logic_1164.all;
 entity LogicProject is
 port(
-	input: in STD_LOGIC_VECTOR (15 downto 0);
+	inpt: in STD_LOGIC_VECTOR (15 downto 0);
 	upd: in std_LOGIC;
 	exe: in std_LOGIC;
 	--output: out STD_LOGIC_VECTOR (15 downto 0) commented this out in favor of outputA and outputB to control lights
@@ -594,7 +594,7 @@ architecture Project of LogicProject is
 		--signal notalout, notblout: std_logic_vector (7 downto 0); -- do we need these(?)
 		
 		--giant mux input and component outputs
-		signal vecadd, vecxor, vecmovimmdata, vecmovRegtoReg, vecinc, vecdec, vecrot, vecneg, vecout, c : std_LOGIC_VECTOR (7 downto 0);
+		signal vecadd, vecxor, vecmovRegtoReg, vecinc, vecdec, vecrot, vecneg, vecout, c : std_LOGIC_VECTOR (7 downto 0);
 		
 		--adder
 		--signal carryin, carryout : std_logic;
@@ -605,14 +605,15 @@ architecture Project of LogicProject is
 		
 begin
 	--all of our port maps
-	instructionDecoder: decoder port map(input, enADD, enXOR, enMOVREGTOREG, enMOVIMMDATA, enMOVAL, enMOVBL, enINC, enDEC, enROL, enROR, enNEG, enOUT, muxReg2, muxReg1, immdata);
+	instructionDecoder: decoder port map(inpt, enADD, enXOR, enMOVREGTOREG, enMOVIMMDATA, enMOVAL, enMOVBL, enINC, enDEC, enROL, enROR, enNEG, enOUT, muxReg2, muxReg1, immdata);
 	AL: reg8bit port map(enMOVAL, reg3out, alout); --enMOVAL or upd (?)
 	BL: reg8bit port map(enMOVBL, reg3out, blout); --enMOVBL or upd (?)
 	reg3: reg8bit port map(exe, giantmuxout, reg3out); --whats the upd for this one(?) ***this should update on the execute clock*** -Tyler
 	--mux1 is for reg1 and reg, mux2 is for reg2 in input parameters
 	mux1: multiplexer1 port map(alout, blout, mux1out, muxReg1);
-	mux2: multiplexer2 port map(alout, blout, immdata, mux2out, muxReg2, enMOVIMMDATA); --idk if immdata into mux2 is a good idea (?), it might be
-	bigmux: giantMux port map(exe, enAdd, enXOR, enMOVIMMDATA, enMOVREGTOREG, enINC, enDEC, enROL, enROR, enNEG, enOUT, vecadd, vecxor, vecmovimmdata, vecmovRegtoReg, vecinc, vecdec, vecrot, vecneg, vecout, giantmuxout);
+	mux2: multiplexer1 port map(alout, blout, mux2out, muxReg2); --idk if immdata into mux2 is a good idea (?)**probably not, immdata straight into giantmux -danny
+	--changed vecmovimmdata to immdata
+	bigmux: giantMux port map(exe, enAdd, enXOR, enMOVIMMDATA, enMOVREGTOREG, enINC, enDEC, enROL, enROR, enNEG, enOUT, vecadd, vecxor, immdata, vecmovRegtoReg, vecinc, vecdec, vecrot, vecneg, vecout, giantmuxout);
 	regAdder: adder port map(mux1out, mux2out, vecadd);
 	regXor: xorcomp port map(exe, upd, mux1out, mux2out, vecxor);
 	regInc: increment port map(mux1out, vecinc);
