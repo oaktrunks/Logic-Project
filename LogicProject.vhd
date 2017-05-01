@@ -61,7 +61,7 @@ architecture giant of giantMux is
 begin
 	process(exe)
 	begin
-	if enADD = '1' then c <= vecadd;
+	if 	enADD = '1' then c <= vecadd;
 	elsif enXOR = '1' then c <= vecxor;
 	elsif enMOVIMMDATA = '1' then c <= vecmovimmdata;
 	elsif enMOVREGTOREG = '1' then c <= vecmovRegtoReg;
@@ -279,7 +279,7 @@ architecture struct of display_hex is
 signal X, Y : std_LOGIC_VECTOR (3 downto 0);
 begin
 	X <= Z(7 downto 4); Y <= Z(3 downto 0);
-	process (X) begin
+	process (Z) begin
 	
 			if X = "0000" then a <= "1000000";
 			elsif X = "0001" then   a <= "1111001";
@@ -594,7 +594,7 @@ architecture Project of LogicProject is
 		--signal notalout, notblout: std_logic_vector (7 downto 0); -- do we need these(?)
 		
 		--giant mux input and component outputs
-		signal vecadd, vecxor, vecmovimmdata, vecmovRegtoReg, vecinc, vecdec, vecrot, vecneg, vecout, c : std_LOGIC_VECTOR (7 downto 0);
+		signal vecadd, vecxor, vecmovRegtoReg, vecinc, vecdec, vecrot, vecneg, vecout, c : std_LOGIC_VECTOR (7 downto 0);
 		
 		--adder
 		--signal carryin, carryout : std_logic;
@@ -612,7 +612,8 @@ begin
 	--mux1 is for reg1 and reg, mux2 is for reg2 in input parameters
 	mux1: multiplexer1 port map(alout, blout, mux1out, muxReg1);
 	mux2: multiplexer2 port map(alout, blout, immdata, mux2out, muxReg2, enMOVIMMDATA); --idk if immdata into mux2 is a good idea (?), it might be
-	bigmux: giantMux port map(exe, enAdd, enXOR, enMOVIMMDATA, enMOVREGTOREG, enINC, enDEC, enROL, enROR, enNEG, enOUT, vecadd, vecxor, vecmovimmdata, vecmovRegtoReg, vecinc, vecdec, vecrot, vecneg, vecout, giantmuxout);
+	--changed vecmovimmdata to immdata
+	bigmux: giantMux port map(exe, enAdd, enXOR, enMOVIMMDATA, enMOVREGTOREG, enINC, enDEC, enROL, enROR, enNEG, enOUT, vecadd, vecxor, immdata, vecmovRegtoReg, vecinc, vecdec, vecrot, vecneg, vecout, giantmuxout);
 	regAdder: adder port map(mux1out, mux2out, vecadd);
 	regXor: xorcomp port map(exe, upd, mux1out, mux2out, vecxor);
 	regInc: increment port map(mux1out, vecinc);
@@ -626,5 +627,4 @@ begin
 	--(?) issues 	: probably make it so OUT doesnt go into reg3? or is it okay
 	--					: some of our components have exe and upd, some dont
 	--					: should we remove cout and cin from adder and incrementer and negator? *** We did -Danny &Tyler
-	-- AND giant multiplexer with execute clock?
 end;
