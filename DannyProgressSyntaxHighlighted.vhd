@@ -267,7 +267,7 @@ end inc;
 library IEEE;
 use IEEE.STD_Logic_1164.all;
 
-entity Display_hex is
+entity display_hex is
 port (Z : in STD_LOGIC_VECTOR (7 downto 0);
 		--X : in STD_Logic_VECTOR (3 downto 0	);
 	   --Y : in STD_Logic_VECTOR (3 downto 0	);
@@ -275,7 +275,7 @@ port (Z : in STD_LOGIC_VECTOR (7 downto 0);
 		b : out STD_Logic_VECTOR (6 downto 0));
 end entity;
 
-architecture struct of Display_hex is
+architecture struct of display_hex is
 signal X, Y : std_LOGIC_VECTOR (3 downto 0);
 begin
 	X <= Z(7 downto 4); Y <= Z(3 downto 0);
@@ -442,7 +442,9 @@ port(
 	input: in STD_LOGIC_VECTOR (15 downto 0);
 	upd: in std_LOGIC;
 	exe: in std_LOGIC;
-	output: out STD_LOGIC_VECTOR (15 downto 0)
+	--output: out STD_LOGIC_VECTOR (15 downto 0) commented this out in favor of outputA and outputB to control lights
+	outputA: out STD_logic_vector(6 downto 0); --left light
+	outputB: out STD_logic_vector(6 downto 0) --left light
 );
 end;
 architecture Project of LogicProject is
@@ -505,12 +507,12 @@ architecture Project of LogicProject is
 
 		end component;
 	component display_hex
-		port (X : in STD_Logic_VECTOR (7 downto 4	);
-	   Y : in STD_Logic_VECTOR (3 downto 0	);
+		port (Z : in STD_LOGIC_VECTOR (7 downto 0);
+		--X : in STD_Logic_VECTOR (3 downto 0	);
+	   --Y : in STD_Logic_VECTOR (3 downto 0	);
 		a : out STD_Logic_VECTOR(6 downto 0);
 		b : out STD_Logic_VECTOR (6 downto 0));
 		end component;
-		
 	component negate
 		port 
 		(
@@ -614,9 +616,9 @@ begin
 	regNeg: negate port map(mux1out, vecneg);
 	
 	--(?) How to connect display_hex
-	--regOut: display_hex port map();
+	regOut: display_hex port map(mux1out, outputA, outputB);
 	
 	--(?) issues 	: probably make it so OUT doesnt go into reg3? or is it okay
 	--					: some of our components have exe and upd, some dont
-	--					: should we remove cout and cin from adder and incrementer and negator?
+	--					: should we remove cout and cin from adder and incrementer and negator? *** We did -Danny &Tyler
 end;
