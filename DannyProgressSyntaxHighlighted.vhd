@@ -83,9 +83,9 @@ entity adder is
 	(
 		a	: in std_logic_vector (7 downto 0);
 		b	: in std_logic_vector (7 downto 0);
-		cin	: in std_logic;
-		sum	: out std_logic_vector (7 downto 0);
-		cout	: out std_logic
+		--cin	: in std_logic;
+		sum	: out std_logic_vector (7 downto 0)
+		--cout	: out std_logic
 		
 	);
 
@@ -95,8 +95,8 @@ architecture sum of adder is
 signal c1,c2,c3,c4,c5,c6,c7: std_logic;
 begin
 
-	sum(0) <= a(0) xor b(0) xor cin;
-	c1 <= (a(0) and b(0)) or (a(0) and cin) or (b(0) and cin);
+	sum(0) <= a(0) xor b(0); 
+	c1 <= (a(0) and b(0)) or (a(0)) or (b(0));
 	
 	sum(1) <= a(1) xor b(1) xor c1;
 	c2 <= (a(1) and b(1)) or (a(1) and c1) or (b(1) and c1);
@@ -117,7 +117,7 @@ begin
 	c7 <= (a(6) and b(6)) or (a(6) and c6) or (b(6) and c6);
 	
 	sum(7) <= a(7) xor b(7) xor c7;
-	cout <= (a(7) and b(7)) or (a(7) and c7) or (b(7) and c7);
+	--cout <= (a(7) and b(7)) or (a(7) and c7) or (b(7) and c7);
 	
 end sum;
 
@@ -225,9 +225,9 @@ entity increment is
 	port 
 	(
 		a	: in std_logic_vector (7 downto 0);
-		cin	: in std_logic;
-		inc	: out std_logic_vector (7 downto 0);
-		cout	: out std_logic
+		--cin	: in std_logic;
+		inc	: out std_logic_vector (7 downto 0)
+		--cout	: out std_logic
 		
 	);
 
@@ -236,9 +236,9 @@ end entity;
 architecture inc of increment is
 signal c1, c2, c3, c4, c5, c6, c7 : std_logic; signal b	: std_logic_vector (7 downto 0);
 begin
-	b <= "0000001";
-	inc(0) <= a(0) xor b(0) xor cin;
-	c1 <= (a(0) and b(0)) or (a(0) and cin) or (b(0) and cin);
+	b <= "00000001";
+	inc(0) <= a(0) xor b(0);
+	c1 <= (a(0) and b(0)) or (a(0)) or (b(0));
 	
 	inc(1) <= a(1) xor b(1) xor c1;
 	c2 <= (a(1) and b(1)) or (a(1) and c1) or (b(1) and c1);
@@ -259,7 +259,7 @@ begin
 	c7 <= (a(6) and b(6)) or (a(6) and c6) or (b(6) and c6);
 	
 	inc(7) <= a(7) xor b(7) xor c7;
-	cout <= (a(7) and b(7)) or (a(7) and c7) or (b(7) and c7);
+	--cout <= (a(7) and b(7)) or (a(7) and c7) or (b(7) and c7);
 	
 end inc;
 
@@ -326,9 +326,9 @@ entity negate is
 	port 
 	(
 		a	: in std_logic_vector (7 downto 0);
-		cin	: in std_logic;
-		neg	: out std_logic_vector (7 downto 0);
-		cout	: out std_logic
+		--cin	: in std_logic;
+		neg	: out std_logic_vector (7 downto 0)
+		--cout	: out std_logic
 		
 	);
 
@@ -338,9 +338,9 @@ architecture neg of negate is
 signal c1, c2, c3, c4, c5, c6, c7 : std_logic; signal temp, b	: std_logic_vector (7 downto 0);
 begin
 	temp <= not a;
-	b <= "0000001";
-	neg(0) <= temp(0) xor b(0) xor cin;
-	c1 <= (temp(0) and b(0)) or (temp(0) and cin) or (b(0) and cin);
+	b <= "00000001";
+	neg(0) <= temp(0) xor b(0);
+	c1 <= (temp(0) and b(0)) or (temp(0)) or (b(0));
 	
 	neg(1) <= temp(1) xor b(1) xor c1;
 	c2 <= (temp(1) and b(1)) or (temp(1) and c1) or (b(1) and c1);
@@ -361,7 +361,7 @@ begin
 	c7 <= (temp(6) and b(6)) or (temp(6) and c6) or (b(6) and c6);
 	
 	neg(7) <= temp(7) xor b(7) xor c7;
-	cout <= (temp(7) and b(7)) or (temp(7) and c7) or (b(7) and c7);
+	--cout <= (temp(7) and b(7)) or (temp(7) and c7) or (b(7) and c7);
 end neg;
 
 --decrement
@@ -458,9 +458,9 @@ architecture Project of LogicProject is
 		(
 		a	: in std_logic_vector (7 downto 0);
 		b	: in std_logic_vector (7 downto 0);
-		cin	: in std_logic;
-		sum	: out std_logic_vector (7 downto 0);
-		cout	: out std_logic
+		--cin	: in std_logic;
+		sum	: out std_logic_vector (7 downto 0)
+		--cout	: out std_logic
 		
 		);
 
@@ -497,9 +497,9 @@ architecture Project of LogicProject is
 		port 
 		(
 		a	: in std_logic_vector (7 downto 0);
-		cin	: in std_logic;
-		inc	: out std_logic_vector (7 downto 0);
-		cout	: out std_logic
+		--cin	: in std_logic;
+		inc	: out std_logic_vector (7 downto 0)
+		--cout	: out std_logic
 		
 		);
 
@@ -515,9 +515,9 @@ architecture Project of LogicProject is
 		port 
 		(
 		a	: in std_logic_vector (7 downto 0);
-		cin	: in std_logic;
-		neg	: out std_logic_vector (7 downto 0);
-		cout	: out std_logic
+		--cin	: in std_logic;
+		neg	: out std_logic_vector (7 downto 0)
+		--cout	: out std_logic
 		
 		);
 
@@ -591,7 +591,7 @@ architecture Project of LogicProject is
 		--giant mux input and component outputs
 		signal vecadd, vecxor, vecmovimmdata, vecmovRegtoReg, vecinc, vecdec, vecrot, vecneg, vecout, c : std_LOGIC_VECTOR (7 downto 0);
 		--adder
-		signal carryin, carryout : std_logic;
+		--signal carryin, carryout : std_logic;
 		--giant mux
 		signal giantmuxout: std_logic_vector(7 downto 0);
 		signal notgiantmuxout: std_logic_vector(7 downto 0); --do we need this(?)
@@ -606,12 +606,12 @@ begin
 	mux1: multiplexer1 port map(alout, blout, mux1out, muxReg1);
 	mux2: multiplexer2 port map(alout, blout, immdata, mux2out, muxReg2, enMOVIMMDATA); --idk if immdata into mux2 is a good idea (?), it might be
 	bigmux: giantMux port map(exe, enAdd, enXOR, enMOVIMMDATA, enMOVREGTOREG, enINC, enDEC, enROL, enROR, enNEG, enOUT, vecadd, vecxor, vecmovimmdata, vecmovRegtoReg, vecinc, vecdec, vecrot, vecneg, vecout, giantmuxout);
-	regAdder: adder port map(mux1out, mux2out, carryin, vecadd, carryout);
+	regAdder: adder port map(mux1out, mux2out, vecadd);
 	regXor: xorcomp port map(exe, upd, mux1out, mux2out, vecxor);
-	regInc: increment port map(mux1out, carryin, vecinc, carryout);
+	regInc: increment port map(mux1out, vecinc);
 	regDec: decrement port map(mux1out, vecdec);
 	regRot: rotator port map(mux1out, vecrot, enROR, enROL);
-	regNeg: negate port map(mux1out, carryin,  vecneg, carryout);
+	regNeg: negate port map(mux1out, vecneg);
 	
 	--(?) How to connect display_hex
 	--regOut: display_hex port map();
