@@ -626,4 +626,5 @@ begin
 	--(?) issues 	: probably make it so OUT doesnt go into reg3? or is it okay
 	--					: some of our components have exe and upd, some dont
 	--					: should we remove cout and cin from adder and incrementer and negator? *** We did -Danny &Tyler
+	-- AND giant multiplexer with execute clock?
 end;
