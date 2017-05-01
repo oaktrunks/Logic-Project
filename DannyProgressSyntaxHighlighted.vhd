@@ -10,9 +10,13 @@ end;
 architecture enabler of decoder is
 begin
 process(instruction, UPD) begin
-if instruction(15 downto 8) ="10110000" then enMOVAL <= UPD; enMOVBL <= '0'; immdata <= instruction(7 downto 0);
-elsif instruction(15 downto 8) ="10110011" then enMOVAL <= '0'; enMOVBL <= UPD; immdata <= instruction(7 downto 0);
-else enMOVAL <= '0'; enMOVBL <= '0';
+--These are only for the MOV immdata command
+if instruction(15 downto 8) ="10110000" then enMOVAL <= UPD; enMOVBL <= '0'; immdata <= instruction(7 downto 0); --update AL
+elsif instruction(15 downto 8) ="10110011" then enMOVAL <= '0'; enMOVBL <= UPD; immdata <= instruction(7 downto 0); --update BL
+--These are for commands that have reg1 or reg as parameter
+elsif (not instruction(2) and instruction(1) and instruction(0)) = '1' then enMOVAL <= '0'; enMOVBL <= UPD; --update BL
+elsif (not instruction(2) and instruction(1) and instruction(0)) = '0' then enMOVAL <= UPD; enMOVBL <= '0'; --update BL
+--else enMOVAL <= '0'; enMOVBL <= '0';
 end if;
 end process;
 enADD <= not instruction(15) and not instruction(14) and not instruction(13) and not instruction(12) and not instruction(11) and not instruction(10) and not instruction(9) and not instruction(8) and instruction(7) and instruction(6);
