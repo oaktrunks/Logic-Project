@@ -439,7 +439,7 @@ end mux1;
 library IEEE; use IEEE.STD_Logic_1164.all;
 entity LogicProject is
 port(
-	input: in STD_LOGIC_VECTOR (15 downto 0);
+	inpt: in STD_LOGIC_VECTOR (15 downto 0);
 	upd: in std_LOGIC;
 	exe: in std_LOGIC;
 	--output: out STD_LOGIC_VECTOR (15 downto 0) commented this out in favor of outputA and outputB to control lights
@@ -605,7 +605,7 @@ architecture Project of LogicProject is
 		
 begin
 	--all of our port maps
-	instructionDecoder: decoder port map(input, enADD, enXOR, enMOVREGTOREG, enMOVIMMDATA, enMOVAL, enMOVBL, enINC, enDEC, enROL, enROR, enNEG, enOUT, muxReg2, muxReg1, immdata);
+	instructionDecoder: decoder port map(inpt, enADD, enXOR, enMOVREGTOREG, enMOVIMMDATA, enMOVAL, enMOVBL, enINC, enDEC, enROL, enROR, enNEG, enOUT, muxReg2, muxReg1, immdata);
 	AL: reg8bit port map(enMOVAL, reg3out, alout); --enMOVAL or upd (?)
 	BL: reg8bit port map(enMOVBL, reg3out, blout); --enMOVBL or upd (?)
 	reg3: reg8bit port map(exe, giantmuxout, reg3out); --whats the upd for this one(?) ***this should update on the execute clock*** -Tyler
