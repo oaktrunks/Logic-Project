@@ -152,37 +152,6 @@ begin
 	
 end r8;
 
---2 x 7 Bit register
-library IEEE; use IEEE.STD_Logic_1164.all;
-entity reg2x7 is
-
-	port 
-	(	
-		UPD		: in std_logic;
-		rAin      : in std_logic_vector (6 downto 0);
-		rBin      : in std_logic_vector (6 downto 0);
-		rAout		: out std_logic_vector (6 downto 0);
-		rBout		: out std_logic_vector (6 downto 0)
-	);
-
-end entity;
-architecture outputreg of reg2x7 is
-begin
-
-	process (UPD)
-	begin
-		
-		if (UPD = '1') then
-
-				rAout <= rAin;
-				rBout <= rBin;
-
-		end if;
-	end process;
-
-	
-end outputreg;
-
 --rotators
 library IEEE; use IEEE.STD_Logic_1164.all;
 entity rotator is
@@ -474,18 +443,6 @@ architecture Project of LogicProject is
 		rout		: out std_logic_vector (7 downto 0)
 		);
 
-		end component;
-		
-		component reg2x7 is
-
-		port 
-		(	
-		UPD		: in std_logic;
-		rAin     : in std_logic_vector (6 downto 0);
-		rBin     : in std_logic_vector (6 downto 0);
-		rAout		: out std_logic_vector (6 downto 0);
-		rBout		: out std_logic_vector (6 downto 0)
-		);
 		end component;
 
 	component rotator
