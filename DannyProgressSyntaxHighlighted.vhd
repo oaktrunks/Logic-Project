@@ -1,4 +1,4 @@
---Decoder.
+--Decoder
 library IEEE; use IEEE.STD_Logic_1164.all;
 entity decoder is
 port(instruction: in STD_LOGIC_VECTOR (15 downto 0);
