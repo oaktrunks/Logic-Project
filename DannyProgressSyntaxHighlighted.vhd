@@ -9,9 +9,9 @@ immdata : out std_LOGIC_VECTOR (7 downto 0));
 end;
 architecture enabler of decoder is
 begin
-process(instruction, UPD) begin
-if instruction(15 downto 8) ="10110000" then enMOVAL <= '1'; enMOVBL <= '0'; immdata <= instruction(7 downto 0);
-elsif instruction(15 downto 8) ="10110011" then enMOVAL <= '0'; enMOVBL <= '1'; immdata <= instruction(7 downto 0);
+process(UPD) begin
+if instruction(15 downto 8) ="10110000" then enMOVAL <= UPD; enMOVBL <= not UPD; immdata <= instruction(7 downto 0);
+elsif instruction(15 downto 8) ="10110011" then enMOVAL <= not UPD; enMOVBL <= UPD; immdata <= instruction(7 downto 0);
 else enMOVAL <= '0'; enMOVBL <= '0';
 end if;
 end process;
