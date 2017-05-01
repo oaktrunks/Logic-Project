@@ -1,8 +1,8 @@
---Decoder.
+--Decoder
 library IEEE; use IEEE.STD_Logic_1164.all;
 entity decoder is
 port(instruction: in STD_LOGIC_VECTOR (15 downto 0);
---EXE, 
+--EXE 
 UPD: in STD_LOGIC;
 enADD, enXOR, enMOVREGTOREG, enMOVIMMDATA, enMOVAL, enMOVBL, enINC, enDEC, enROL, enROR, enNEG, enOUT, muxReg2, muxReg1: out STD_LOGIC;
 immdata : out std_LOGIC_VECTOR (7 downto 0));
